@@ -1,0 +1,43 @@
+{
+    "products": [
+      {
+        "id": 1,
+        "name": "Laptop 1",
+        "price": 150000,
+        "img": "https://mdbcdn.b-cdn.net/img/Photos/Horizontal/E-commerce/Products/4.webp",
+        "title": "Today's Combo Offer",
+        "sale": true,
+        "quantity": 6,
+        "old_price": 180000
+      },
+      {
+        "id": 2,
+        "name": "Laptop 2",
+        "price": 250000,
+        "img": "https://mdbcdn.b-cdn.net/img/Photos/Horizontal/E-commerce/Products/4.webp",
+        "title": "Today's Combo Offer",
+        "sale": false,
+        "quantity": 6
+      },
+      {
+        "id": 3,
+        "name": "Laptop 3",
+        "price": 300000,
+        "img": "https://mdbcdn.b-cdn.net/img/Photos/Horizontal/E-commerce/Products/4.webp",
+        "title": "Today's Combo Offer",
+        "sale": false,
+        "quantity": 6
+      },
+      {
+        "id": 4,
+        "name": "Latop 4",
+        "price": 120000,
+        "img": "https://mdbcdn.b-cdn.net/img/Photos/Horizontal/E-commerce/Products/4.webp",
+        "title": "Today's Combo Offer",
+        "sale": true,
+        "quantity": 6,
+        "old_price": 180000
+      }
+    ]
+  }
+  
