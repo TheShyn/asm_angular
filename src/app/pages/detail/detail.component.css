@@ -58,13 +58,22 @@ text-color {
     color: white;
     width: 150px;
     height: 40px;
-    border-radius: 0;
+    border-radius:5px;
+    border: 1px solid #0093c4;
+    transition: 0.5s;
+}
+/* input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }
 
+input[type="number"] {
+  -moz-appearance: textfield;
+} */
 .custom-btn:hover {
-    background-color: #0093c4 !important;
-    font-size: 18px;
-    color: white !important;
+    background-color: transparent !important;
+    color: #0093c4 !important;
 }
 
 .similar-product img {

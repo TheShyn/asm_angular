@@ -9,6 +9,8 @@ import axios from 'axios'
 export class DetailComponent implements OnInit{
   id: any;
   product:any
+  desctiptionText: any
+  isDesctiption: boolean = false
   constructor(private route: ActivatedRoute) { }
 
   ngOnInit(): void {
@@ -23,9 +25,18 @@ export class DetailComponent implements OnInit{
     axios.get(` http://localhost:3000/products/${this.id}`)
       .then(response => {
         this.product = response.data;
+        this.desctiptionText = response.data.short_desc
       })
       .catch(error => {
         console.log(error);
       });
+  }
+  toogleDesctiption(){
+    this.isDesctiption = !this.isDesctiption
+    if(this.isDesctiption){
+      this.desctiptionText = this.product.description
+    }else{
+      this.desctiptionText = this.product.short_desc
+    }
   }
 }

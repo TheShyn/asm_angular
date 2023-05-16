@@ -46,7 +46,7 @@
                     </div>
 
                     <div class="block quantity">
-                        <input type="number" class="form-control" id="cart_quantity" value="1" min="0" max="5"
+                        <input type="number" style="border-radius: 5px; max-width: 60px;" class="form-control" id="cart_quantity" value="1" min="1" 
                             placeholder="Enter email" name="cart_quantity">
                     </div>
                 </div>
@@ -54,12 +54,6 @@
 
 
 
-            </div>
-
-            <div class="product-details my-4">
-                <p class="details-title text-color mb-1">Product Details</p>
-                <p class="description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat excepturi odio
-                    recusandae aliquid ad impedit autem commodi earum voluptatem laboriosam? </p>
             </div>
 
             <div class="delivery my-4">
@@ -72,6 +66,15 @@
                 </p>
                 <p class="text-secondary">View delivery options here</p>
             </div>
+            <div class="product-details my-4">
+                <p class="details-title text-color mb-1">Product Details</p>
+                <p class="description">{{desctiptionText}} </p>
+                <div style="text-align: center;">
+                    <button type="button" (click) = "toogleDesctiption()" style="width: 150px; height: 40px;" class="btn btn-primary">{{isDesctiption ? "Hidden" : "Learn more" }}</button>
+
+                </div>
+            </div>
+
 
 
         </div>
