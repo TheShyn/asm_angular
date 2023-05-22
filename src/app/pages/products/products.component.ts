@@ -1,32 +1,34 @@
 import { Component, OnInit } from '@angular/core';
 import axios from 'axios';
+import { ProductsService } from 'src/app/services/products/products.service';
 
 @Component({
   selector: 'app-products',
   templateUrl: './products.component.html',
   styleUrls: ['./products.component.css']
 })
-export class ProductsComponent{
-  datas:any = []
-  typeList:boolean = true
+export class ProductsComponent implements OnInit {
+  datas: any = []
+  typeList: boolean = true
+  constructor(private ProductsService: ProductsService) {
 
-  changeListColumn (){
-    console.log('dasds222')
+  }
 
+  changeListColumn() {
     this.typeList = true
   }
-  changeListRow (){
-    console.log('dasds')
+  changeListRow() {
     this.typeList = false
   }
-  // ngOnInit(): void {
-  //   axios.get("http://localhost:3000/products")
-  //   .then(response =>{
-  //     console.log(response.data)
-  //     this.datas = response.data
-  //   })
-  //   .catch(error => {
-  //     console.log(error)
-  //   })
-  // }
+  ngOnInit(): void {
+    this.ProductsService.getProducts().subscribe(
+      (response: any) => {
+        this.datas = response;
+        console.log(response);
+      },
+      (error: any) => {
+        console.log(error);
+      }
+    )
+  }
 }

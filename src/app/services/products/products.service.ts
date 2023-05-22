@@ -13,6 +13,7 @@ export class ProductsService {
   //   return this.http.get<any>(this.apiUrl)
   // }
 
+  //lấy tất cả
   getProducts(): Observable<any> {
     return this.http.get<any>(this.apiUrl)
   }
@@ -30,6 +31,7 @@ export class ProductsService {
   //   return throwError(errorMessage);
   // }
 
+  //lấy 1
   getProduct(id: string): Observable<any> {
     const url = `${this.apiUrl}/${id}`;
     return this.http.get<any>(url);
