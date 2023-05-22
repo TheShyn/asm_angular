@@ -1,10 +1,14 @@
-/* .card{
-    max-width: 400px;
-} */
-.container-cus{
-    padding: 40px;
+.icon-hover:hover {
+    border-color: #3b71ca !important;
+    background-color: white !important;
 }
-.badge{
-    position: absolute;
-    top:10px
+a.active{
+    border-color: #000 !important;
 }
+.icon-hover:hover i {
+    color: #3b71ca !important;
+}
+.accordion-button:focus {
+    box-shadow: none !important;
+    outline: none !important;
+  }

@@ -6,16 +6,27 @@ import axios from 'axios';
   templateUrl: './products.component.html',
   styleUrls: ['./products.component.css']
 })
-export class ProductsComponent implements OnInit{
+export class ProductsComponent{
   datas:any = []
-  ngOnInit(): void {
-    axios.get("http://localhost:3000/products")
-    .then(response =>{
-      console.log(response.data)
-      this.datas = response.data
-    })
-    .catch(error => {
-      console.log(error)
-    })
+  typeList:boolean = true
+
+  changeListColumn (){
+    console.log('dasds222')
+
+    this.typeList = true
   }
+  changeListRow (){
+    console.log('dasds')
+    this.typeList = false
+  }
+  // ngOnInit(): void {
+  //   axios.get("http://localhost:3000/products")
+  //   .then(response =>{
+  //     console.log(response.data)
+  //     this.datas = response.data
+  //   })
+  //   .catch(error => {
+  //     console.log(error)
+  //   })
+  // }
 }

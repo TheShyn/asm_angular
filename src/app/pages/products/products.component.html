@@ -1,44 +1,666 @@
-<section style="background-color: #eee;">
-    <div class="container-cus py-5">
-      <div class="row ">
-        <div class="col-md-12 col-lg-3 mb-4 mb-lg-0" *ngFor ='let item of datas'>
-          <div class="card">
-            <div class="d-flex justify-content-between p-3">
-              <p class="lead mb-0">{{item?.title}}</p>
-              <div  *ngIf = "item?.sale"
-                class="bg-info rounded-circle d-flex align-items-center justify-content-center shadow-1-strong"
-                style="width: 35px; height: 35px;">
-                <p class="text-white mb-0 small">sale</p>
+<!--Main Navigation-->
+<div class="" >
+  <section class="py-11 bg-light-gradient border-bottom border-white border-5">
+      <div class="bg-holder overlay overlay-light"
+          style="background-image:url(assets/img/banner_pducts.avif);background-size:cover;object-fit: cover;"></div>
+      <!--/.bg-holder-->
+      <div class="container">
+          <div class="row flex-center">
+              <div class="col-12 mb-10">
+                  <div class="d-flex align-items-center flex-column">
+                      <h1 class="fw-bold fs-lg-4">Our Products</h1>
+                      <h1 class="" style="font-size: 18px;font-style: italic;">Exclusively designed for you</h1>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </section>
+</div>
+<!-- sidebar + content -->
+<section class="" >
+  <div class="container">
+    <div class="row">
+      <!-- sidebar -->
+      <div class="col-lg-3">
+        <!-- Toggle button -->
+        <button class="btn btn-outline-secondary mb-3 w-100 d-lg-none" type="button" data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent1" aria-controls="navbarSupportedContent1" aria-expanded="false"
+          aria-label="Toggle navigation">
+          <span>Show filter</span>
+        </button>
+        <!-- Collapsible wrapper -->
+        <div class="collapse card d-lg-block mb-5" id="navbarSupportedContent1" style="border:none">
+          <div class="accordion" id="accordionPanelsStayOpenExample">
+            <div class="accordion-item" style="border:none">
+              <h2 class="accordion-header" id="headingOne">
+                <button class="accordion-button text-dark bg-light" type="button" data-bs-toggle="collapse"
+                  data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true"
+                  aria-controls="panelsStayOpen-collapseOne" style="background-color: white !important; border-bottom:1px solid #ccc;">
+                  Categories
+                </button>
+              </h2>
+              <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show"
+                aria-labelledby="headingOne">
+                <div class="accordion-body" style="padding:0">
+                  <ul class="list-unstyled" style="margin-left: 20px;">
+                    <li ><a style="font-size: 16px;padding:15px 8px; border-bottom: 1px solid #ccc; color:#6e757c !important" [routerLink]="['/products']" [queryParams]="{ v: 'a' }" class="active d-block text-dark text-decoration-none">Electronics </a></li>
+                    <li ><a style="font-size: 16px;padding:15px 8px; border-bottom: 1px solid #ccc; color:#6e757c !important" [routerLink]="['/products']" [queryParams]="{ v: 'a' }"  class="d-block text-dark text-decoration-none">Home items </a></li>
+                    <li ><a style="font-size: 16px;padding:15px 8px; border-bottom: 1px solid #ccc; color:#6e757c !important" [routerLink]="['/products']" [queryParams]="{ v: 'a' }"  class="d-block text-dark text-decoration-none">Books, Magazines </a></li>
+                    <li ><a style="font-size: 16px;padding:15px 8px; border-bottom: 1px solid #ccc; color:#6e757c !important" [routerLink]="['/products']" [queryParams]="{ v: 'a' }"  class="d-block text-dark text-decoration-none">Men's clothing </a></li>
+                    <li ><a style="font-size: 16px;padding:15px 8px; border-bottom: 1px solid #ccc; color:#6e757c !important" [routerLink]="['/products']" [queryParams]="{ v: 'a' }"  class="d-block text-dark text-decoration-none">Interiors items </a></li>
+                    <li ><a style="font-size: 16px;padding:15px 8px; border-bottom: 1px solid #ccc; color:#6e757c !important" [routerLink]="['/products']" [queryParams]="{ v: 'a' }"  class="d-block text-dark text-decoration-none">Underwears </a></li>
+                    <li ><a style="font-size: 16px;padding:15px 8px; border-bottom: 1px solid #ccc; color:#6e757c !important" [routerLink]="['/products']" [queryParams]="{ v: 'a' }"  class="d-block text-dark text-decoration-none">Shoes for men </a></li>
+                    <li ><a style="font-size: 16px;padding:15px 8px; border-bottom: 1px solid #ccc; color:#6e757c !important" [routerLink]="['/products']" [queryParams]="{ v: 'a' }"  class="d-block text-dark text-decoration-none">Accessories </a></li>
+                  </ul>
+                </div>
               </div>
             </div>
+            <!-- <div class="accordion-item">
+              <h2 class="accordion-header" id="headingTwo">
+                <button
+                        class="accordion-button text-dark bg-light"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#panelsStayOpen-collapseTwo"
+                        aria-expanded="true"
+                        aria-controls="panelsStayOpen-collapseTwo"
+                        >
+                  Brands
+                </button>
+              </h2>
+              <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse show" aria-labelledby="headingTwo">
+                <div class="accordion-body">
+                  <div>
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked1" checked />
+                      <label class="form-check-label" for="flexCheckChecked1">Mercedes</label>
+                      <span class="badge badge-secondary float-end">120</span>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked2" checked />
+                      <label class="form-check-label" for="flexCheckChecked2">Toyota</label>
+                      <span class="badge badge-secondary float-end">15</span>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked3" checked />
+                      <label class="form-check-label" for="flexCheckChecked3">Mitsubishi</label>
+                      <span class="badge badge-secondary float-end">35</span>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked4" checked />
+                      <label class="form-check-label" for="flexCheckChecked4">Nissan</label>
+                      <span class="badge badge-secondary float-end">89</span>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
+                      <label class="form-check-label" for="flexCheckDefault">Honda</label>
+                      <span class="badge badge-secondary float-end">30</span>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
+                      <label class="form-check-label" for="flexCheckDefault">Suzuki</label>
+                      <span class="badge badge-secondary float-end">30</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div> -->
+            <!-- <div class="accordion-item">
+              <h2 class="accordion-header" id="headingThree">
+                <button
+                        class="accordion-button text-dark bg-light"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#panelsStayOpen-collapseThree"
+                        aria-expanded="false"
+                        aria-controls="panelsStayOpen-collapseThree"
+                        >
+                  Price
+                </button>
+              </h2>
+              <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse show" aria-labelledby="headingThree">
+                <div class="accordion-body">
+                  <div class="range">
+                    <input type="range" class="form-range" id="customRange1" />
+                  </div>
+                  <div class="row mb-3">
+                    <div class="col-6">
+                      <p class="mb-0">
+                        Min
+                      </p>
+                      <div class="form-outline">
+                        <input type="number" id="typeNumber" class="form-control" />
+                        <label class="form-label" for="typeNumber">$0</label>
+                      </div>
+                    </div>
+                    <div class="col-6">
+                      <p class="mb-0">
+                        Max
+                      </p>
+                      <div class="form-outline">
+                        <input type="number" id="typeNumber" class="form-control" />
+                        <label class="form-label" for="typeNumber">$1,0000</label>
+                      </div>
+                    </div>
+                  </div>
+                  <button type="button" class="btn btn-white w-100 border border-secondary">apply</button>
+                </div>
+              </div>
+            </div> -->
+            <!-- <div class="accordion-item">
+              <h2 class="accordion-header" id="headingThree">
+                <button
+                        class="accordion-button text-dark bg-light"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#panelsStayOpen-collapseFour"
+                        aria-expanded="false"
+                        aria-controls="panelsStayOpen-collapseFour"
+                        >
+                  Size
+                </button>
+              </h2>
+              <div id="panelsStayOpen-collapseFour" class="accordion-collapse collapse show" aria-labelledby="headingThree">
+                <div class="accordion-body">
+                  <input type="checkbox" class="btn-check border justify-content-center" id="btn-check1" checked autocomplete="off" />
+                  <label class="btn btn-white mb-1 px-1" style="width: 60px;" for="btn-check1">XS</label>
+                  <input type="checkbox" class="btn-check border justify-content-center" id="btn-check2" checked autocomplete="off" />
+                  <label class="btn btn-white mb-1 px-1" style="width: 60px;" for="btn-check2">SM</label>
+                  <input type="checkbox" class="btn-check border justify-content-center" id="btn-check3" checked autocomplete="off" />
+                  <label class="btn btn-white mb-1 px-1" style="width: 60px;" for="btn-check3">LG</label>
+                  <input type="checkbox" class="btn-check border justify-content-center" id="btn-check4" checked autocomplete="off" />
+                  <label class="btn btn-white mb-1 px-1" style="width: 60px;" for="btn-check4">XXL</label>
+                </div>
+              </div>
+            </div> -->
+            <!-- <div class="accordion-item">
+              <h2 class="accordion-header" id="headingThree">
+                <button
+                        class="accordion-button text-dark bg-light"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#panelsStayOpen-collapseFive"
+                        aria-expanded="false"
+                        aria-controls="panelsStayOpen-collapseFive"
+                        >
+                  Ratings
+                </button>
+              </h2>
+              <div id="panelsStayOpen-collapseFive" class="accordion-collapse collapse show" aria-labelledby="headingThree">
+                <div class="accordion-body">
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" checked />
+                    <label class="form-check-label" for="flexCheckDefault">
+                      <i class="fas fa-star text-warning"></i><i class="fas fa-star text-warning"></i><i class="fas fa-star text-warning"></i><i class="fas fa-star text-warning"></i>
+                      <i class="fas fa-star text-warning"></i>
+                    </label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" checked />
+                    <label class="form-check-label" for="flexCheckDefault">
+                      <i class="fas fa-star text-warning"></i><i class="fas fa-star text-warning"></i><i class="fas fa-star text-warning"></i><i class="fas fa-star text-warning"></i>
+                      <i class="fas fa-star text-secondary"></i>
+                    </label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" checked />
+                    <label class="form-check-label" for="flexCheckDefault">
+                      <i class="fas fa-star text-warning"></i><i class="fas fa-star text-warning"></i><i class="fas fa-star text-warning"></i><i class="fas fa-star text-secondary"></i>
+                      <i class="fas fa-star text-secondary"></i>
+                    </label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" checked />
+                    <label class="form-check-label" for="flexCheckDefault">
+                      <i class="fas fa-star text-warning"></i><i class="fas fa-star text-warning"></i><i class="fas fa-star text-secondary"></i><i class="fas fa-star text-secondary"></i>
+                      <i class="fas fa-star text-secondary"></i>
+                    </label>
+                  </div>
+                </div>
+              </div>
+            </div> -->
+          </div>
+        </div>
+      </div>
+      <!-- sidebar -->
+      <!-- content -->
+      <div class="col-lg-9">
+        <header class="d-sm-flex align-items-center border-bottom mb-4 pb-3">
+          <strong class="d-block py-2">32 Items found </strong>
+          <div class="ms-auto d-flex gap-2">
+            <select class="form-select d-inline-block w-auto border pt-1">
+              <option value="0">Best match</option>
+              <option value="1">Recommended</option>
+              <option value="2">High rated</option>
+              <option value="3">Randomly</option>
+            </select>
+            <div class="btn-group shadow-0 border">
+              <a class="btn btn-light" style="border:none" [class.active] = "typeList" (click) = "changeListColumn()" title="List view">
+                <i class="fa fa-bars fa-lg"></i>
+              </a>
+              <a class="btn btn-light" style="border:none" [class.active] = "!typeList" (click) = "changeListRow()" title="Grid view">
+                <i class="fa fa-th fa-lg"></i>
+              </a>
+            </div>
+          </div>
+        </header>
+        <div *ngIf="typeList">
+          <div class="row justify-content-center mb-3">
+            <div class="col-md-12">
+              <div class="card shadow-0 border rounded-3">
+                <div class="card-body">
+                  <div class="row g-0">
+                    <div class="col-xl-3 col-md-4 d-flex justify-content-center">
+                      <div class="bg-image hover-zoom ripple rounded ripple-surface me-md-3 mb-3 mb-md-0">
+                        <img src="https://bootstrap-ecommerce.com/bootstrap5-ecommerce/images/items/12.webp"
+                          class="w-100" />
+                        <a href="#!">
+                          <div class="hover-overlay">
+                            <div class="mask" style="background-color: rgba(253, 253, 253, 0.15);"></div>
+                          </div>
+                        </a>
+                      </div>
+                    </div>
+                    <div class="col-xl-6 col-md-5 col-sm-7">
+                      <h5>T-shirt for Men Blue Cotton Base</h5>
+                      <div class="d-flex flex-row">
+                        <div class="text-warning mb-1 me-2">
+                          <i class="fa fa-star"></i>
+                          <i class="fa fa-star"></i>
+                          <i class="fa fa-star"></i>
+                          <i class="fa fa-star"></i>
+                          <i class="fas fa-star-half-alt"></i>
+                          
+                        </div>
+                      
+                      </div>
 
-              <img [src]="item?.img" style="cursor: pointer" 
-                class="card-img-top" alt="Laptop" [routerLink]="['/products',item?.id]" /> 
-            <div class="card-body">
-              <div class="d-flex justify-content-between" >
-                <p class="small"><a href="#!" class="text-muted">Laptops</a></p>
-                <p *ngIf = "item?.sale" class="small text-danger"><s>$1099</s></p>
-              </div>
-  
-              <div class="d-flex justify-content-between mb-3">
-                <h5 style="cursor: pointer;" class="mb-0" [routerLink]="['/products',item?.id]">{{item?.name}}</h5>
-                <h5 class="text-dark mb-0">$ {{item?.price}}</h5>
-              </div>
-  
-              <div class="d-flex justify-content-between mb-2">
-                <p class="text-muted mb-0">Available: <span class="fw-bold">{{item?.quantity}}</span></p>
-                <div class="ms-auto text-warning">
-                  <i class="fa fa-star"></i>
-                  <i class="fa fa-star"></i>
-                  <i class="fa fa-star"></i>
-                  <i class="fa fa-star"></i>
-                  <i class="fa fa-star"></i>
+                      <p class="text mb-4 mb-md-0">
+                        Short description about the product goes here, for ex its features. Lorem ipsum dolor sit amet
+                        with hapti you enter into any new area of science, you almost lorem ipsum is great text
+                      </p>
+                    </div>
+                    <div class="col-xl-3 col-md-3 col-sm-5">
+                      <div class="d-flex align-items-center gap-2">
+                        <h2 class="price" style="margin:0;color:#ed1d24">$88.88</h2>
+                        <del style="color:#ccc">$88.88</del>
+                      </div>
+                      <h6 class="text-success">Free shipping</h6>
+                      <div class="mt-4 d-flex ">
+                        <button class="btn btn-primary shadow-0" style="margin-right: 10px;" type="button">Buy
+                          this</button>
+                        <a href="#!" class="btn btn-light border px-2 pt-2 icon-hover"><i
+                            class="fas fa-heart fa-lg px-1"></i></a>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
+
+          <div class="row justify-content-center mb-3">
+            <div class="col-md-12">
+              <div class="card shadow-0 border rounded-3">
+                <div class="card-body">
+                  <div class="row g-0">
+                    <div class="col-xl-3 col-md-4 d-flex justify-content-center">
+                      <div class="bg-image hover-zoom ripple rounded ripple-surface me-md-3 mb-3 mb-md-0">
+                        <img src="https://bootstrap-ecommerce.com/bootstrap5-ecommerce/images/items/12.webp"
+                          class="w-100" />
+                        <a href="#!">
+                          <div class="hover-overlay">
+                            <div class="mask" style="background-color: rgba(253, 253, 253, 0.15);"></div>
+                          </div>
+                        </a>
+                      </div>
+                    </div>
+                    <div class="col-xl-6 col-md-5 col-sm-7">
+                      <h5>T-shirt for Men Blue Cotton Base</h5>
+                      <div class="d-flex flex-row">
+                        <div class="text-warning mb-1 me-2">
+                          <i class="fa fa-star"></i>
+                          <i class="fa fa-star"></i>
+                          <i class="fa fa-star"></i>
+                          <i class="fa fa-star"></i>
+                          <i class="fas fa-star-half-alt"></i>
+                          
+                        </div>
+                      
+                      </div>
+
+                      <p class="text mb-4 mb-md-0">
+                        Short description about the product goes here, for ex its features. Lorem ipsum dolor sit amet
+                        with hapti you enter into any new area of science, you almost lorem ipsum is great text
+                      </p>
+                    </div>
+                    <div class="col-xl-3 col-md-3 col-sm-5">
+                      <div class="d-flex flex-row align-items-center mb-1">
+                        <h4 class="mb-1 me-1">$99.50</h4>
+                        <span class="text-danger"><s>$190</s></span>
+                      </div>
+                      <h6 class="text-success">Free shipping</h6>
+                      <div class="mt-4 d-flex ">
+                        <button class="btn btn-primary shadow-0" style="margin-right: 10px;" type="button">Buy
+                          this</button>
+                        <a href="#!" class="btn btn-light border px-2 pt-2 icon-hover"><i
+                            class="fas fa-heart fa-lg px-1"></i></a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row justify-content-center mb-3">
+            <div class="col-md-12">
+              <div class="card shadow-0 border rounded-3">
+                <div class="card-body">
+                  <div class="row g-0">
+                    <div class="col-xl-3 col-md-4 d-flex justify-content-center">
+                      <div class="bg-image hover-zoom ripple rounded ripple-surface me-md-3 mb-3 mb-md-0">
+                        <img src="https://bootstrap-ecommerce.com/bootstrap5-ecommerce/images/items/12.webp"
+                          class="w-100" />
+                        <a href="#!">
+                          <div class="hover-overlay">
+                            <div class="mask" style="background-color: rgba(253, 253, 253, 0.15);"></div>
+                          </div>
+                        </a>
+                      </div>
+                    </div>
+                    <div class="col-xl-6 col-md-5 col-sm-7">
+                      <h5>T-shirt for Men Blue Cotton Base</h5>
+                      <div class="d-flex flex-row">
+                        <div class="text-warning mb-1 me-2">
+                          <i class="fa fa-star"></i>
+                          <i class="fa fa-star"></i>
+                          <i class="fa fa-star"></i>
+                          <i class="fa fa-star"></i>
+                          <i class="fas fa-star-half-alt"></i>
+                          
+                        </div>
+                      
+                      </div>
+
+                      <p class="text mb-4 mb-md-0">
+                        Short description about the product goes here, for ex its features. Lorem ipsum dolor sit amet
+                        with hapti you enter into any new area of science, you almost lorem ipsum is great text
+                      </p>
+                    </div>
+                    <div class="col-xl-3 col-md-3 col-sm-5">
+                      <div class="d-flex flex-row align-items-center mb-1">
+                        <h4 class="mb-1 me-1">$99.50</h4>
+                        <span class="text-danger"><s>$190</s></span>
+                      </div>
+                      <h6 class="text-success">Free shipping</h6>
+                      <div class="mt-4 d-flex ">
+                        <button class="btn btn-primary shadow-0" style="margin-right: 10px;" type="button">Buy
+                          this</button>
+                        <a href="#!" class="btn btn-light border px-2 pt-2 icon-hover"><i
+                            class="fas fa-heart fa-lg px-1"></i></a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row justify-content-center mb-3">
+            <div class="col-md-12">
+              <div class="card shadow-0 border rounded-3">
+                <div class="card-body">
+                  <div class="row g-0">
+                    <div class="col-xl-3 col-md-4 d-flex justify-content-center">
+                      <div class="bg-image hover-zoom ripple rounded ripple-surface me-md-3 mb-3 mb-md-0">
+                        <img src="https://bootstrap-ecommerce.com/bootstrap5-ecommerce/images/items/12.webp"
+                          class="w-100" />
+                        <a href="#!">
+                          <div class="hover-overlay">
+                            <div class="mask" style="background-color: rgba(253, 253, 253, 0.15);"></div>
+                          </div>
+                        </a>
+                      </div>
+                    </div>
+                    <div class="col-xl-6 col-md-5 col-sm-7">
+                      <h5>T-shirt for Men Blue Cotton Base</h5>
+                      <div class="d-flex flex-row">
+                        <div class="text-warning mb-1 me-2">
+                          <i class="fa fa-star"></i>
+                          <i class="fa fa-star"></i>
+                          <i class="fa fa-star"></i>
+                          <i class="fa fa-star"></i>
+                          <i class="fas fa-star-half-alt"></i>
+                          
+                        </div>
+                      
+                      </div>
+
+                      <p class="text mb-4 mb-md-0">
+                        Short description about the product goes here, for ex its features. Lorem ipsum dolor sit amet
+                        with hapti you enter into any new area of science, you almost lorem ipsum is great text
+                      </p>
+                    </div>
+                    <div class="col-xl-3 col-md-3 col-sm-5">
+                      <div class="d-flex flex-row align-items-center mb-1">
+                        <h4 class="mb-1 me-1">$99.50</h4>
+                        <span class="text-danger"><s>$190</s></span>
+                      </div>
+                      <h6 class="text-success">Free shipping</h6>
+                      <div class="mt-4 d-flex ">
+                        <button class="btn btn-primary shadow-0" style="margin-right: 10px;" type="button">Buy
+                          this</button>
+                        <a href="#!" class="btn btn-light border px-2 pt-2 icon-hover"><i
+                            class="fas fa-heart fa-lg px-1"></i></a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row justify-content-center mb-3">
+            <div class="col-md-12">
+              <div class="card shadow-0 border rounded-3">
+                <div class="card-body">
+                  <div class="row g-0">
+                    <div class="col-xl-3 col-md-4 d-flex justify-content-center">
+                      <div class="bg-image hover-zoom ripple rounded ripple-surface me-md-3 mb-3 mb-md-0">
+                        <img src="https://bootstrap-ecommerce.com/bootstrap5-ecommerce/images/items/12.webp"
+                          class="w-100" />
+                        <a href="#!">
+                          <div class="hover-overlay">
+                            <div class="mask" style="background-color: rgba(253, 253, 253, 0.15);"></div>
+                          </div>
+                        </a>
+                      </div>
+                    </div>
+                    <div class="col-xl-6 col-md-5 col-sm-7">
+                      <h5>T-shirt for Men Blue Cotton Base</h5>
+                      <div class="d-flex flex-row">
+                        <div class="text-warning mb-1 me-2">
+                          <i class="fa fa-star"></i>
+                          <i class="fa fa-star"></i>
+                          <i class="fa fa-star"></i>
+                          <i class="fa fa-star"></i>
+                          <i class="fas fa-star-half-alt"></i>
+                          
+                        </div>
+                      
+                      </div>
+
+                      <p class="text mb-4 mb-md-0">
+                        Short description about the product goes here, for ex its features. Lorem ipsum dolor sit amet
+                        with hapti you enter into any new area of science, you almost lorem ipsum is great text
+                      </p>
+                    </div>
+                    <div class="col-xl-3 col-md-3 col-sm-5">
+                      <div class="d-flex flex-row align-items-center mb-1">
+                        <h4 class="mb-1 me-1">$99.50</h4>
+                        <span class="text-danger"><s>$190</s></span>
+                      </div>
+                      <h6 class="text-success">Free shipping</h6>
+                      <div class="mt-4 d-flex ">
+                        <button class="btn btn-primary shadow-0" style="margin-right: 10px;" type="button">Buy
+                          this</button>
+                        <a href="#!" class="btn btn-light border px-2 pt-2 icon-hover"><i
+                            class="fas fa-heart fa-lg px-1"></i></a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
         </div>
+        <div *ngIf="!typeList">
+          <div class="row">
+            <div class="col-md-3 col-sm-6 mb-3">
+              <div class="product-grid" style="border-radius: 5px; overflow: hidden;">
+                <div class="product-image">
+                  <a href="#" class="image">
+                    <img class="pic-1" src="../../../assets/img/hat.png">
+                    <img class="pic-2" src="../../../assets/img/hat.png">
+                  </a>
+                  <ul class="product-links">
+                    <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
+                    <li><a href="#"><i class="far fa-heart"></i></a></li>
+                    <li><a href="#"><i class="fa fa-random"></i></a></li>
+                    <li><a href="#"><i class="fa fa-search"></i></a></li>
+                  </ul>
+                </div>
+                <div class="product-content">
+                  <ul class="rating">
+                    <li class="fa fa-star"></li>
+                    <li class="fa fa-star"></li>
+                    <li class="fa fa-star"></li>
+                    <li class="far fa-star"></li>
+                    <li class="far fa-star"></li>
+                  </ul>
+                  <h3 class="title"><a href="#">Men's Jacket</a></h3>
+                  <div class="d-flex align-items-center gap-2">
+                    
+                    <h2 class="price" style="margin:0">$88.88</h2>
+                    <del style="color:#ccc">$88.88</del>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-3 col-sm-6 mb-3">
+              <div class="product-grid" style="border-radius: 5px; overflow: hidden;">
+                <div class="product-image">
+                  <a href="#" class="image">
+                    <img class="pic-1" src="../../../assets/img/hat.png">
+                    <img class="pic-2" src="../../../assets/img/hat.png">
+                  </a>
+                  <ul class="product-links">
+                    <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
+                    <li><a href="#"><i class="far fa-heart"></i></a></li>
+                    <li><a href="#"><i class="fa fa-random"></i></a></li>
+                    <li><a href="#"><i class="fa fa-search"></i></a></li>
+                  </ul>
+                </div>
+                <div class="product-content">
+                  <ul class="rating">
+                    <li class="fa fa-star"></li>
+                    <li class="fa fa-star"></li>
+                    <li class="fa fa-star"></li>
+                    <li class="far fa-star"></li>
+                    <li class="far fa-star"></li>
+                  </ul>
+                  <h3 class="title"><a href="#">Men's Jacket</a></h3>
+                  <div class="price">$88.88</div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-3 col-sm-6 mb-3">
+              <div class="product-grid" style="border-radius: 5px; overflow: hidden;">
+                <div class="product-image">
+                  <a href="#" class="image">
+                    <img class="pic-1" src="../../../assets/img/hat.png">
+                    <img class="pic-2" src="../../../assets/img/hat.png">
+                  </a>
+                  <ul class="product-links">
+                    <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
+                    <li><a href="#"><i class="far fa-heart"></i></a></li>
+                    <li><a href="#"><i class="fa fa-random"></i></a></li>
+                    <li><a href="#"><i class="fa fa-search"></i></a></li>
+                  </ul>
+                </div>
+                <div class="product-content">
+                  <ul class="rating">
+                    <li class="fa fa-star"></li>
+                    <li class="fa fa-star"></li>
+                    <li class="fa fa-star"></li>
+                    <li class="far fa-star"></li>
+                    <li class="far fa-star"></li>
+                  </ul>
+                  <h3 class="title"><a href="#">Men's Jacket</a></h3>
+                  <div class="price">$88.88</div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-3 col-sm-6 mb-3">
+              <div class="product-grid" style="border-radius: 5px; overflow: hidden;">
+                <div class="product-image">
+                  <a href="#" class="image">
+                    <img class="pic-1" src="../../../assets/img/hat.png">
+                    <img class="pic-2" src="../../../assets/img/hat.png">
+                  </a>
+                  <ul class="product-links">
+                    <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
+                    <li><a href="#"><i class="far fa-heart"></i></a></li>
+                    <li><a href="#"><i class="fa fa-random"></i></a></li>
+                    <li><a href="#"><i class="fa fa-search"></i></a></li>
+                  </ul>
+                </div>
+                <div class="product-content">
+                  <ul class="rating">
+                    <li class="fa fa-star"></li>
+                    <li class="fa fa-star"></li>
+                    <li class="fa fa-star"></li>
+                    <li class="far fa-star"></li>
+                    <li class="far fa-star"></li>
+                  </ul>
+                  <h3 class="title"><a href="#">Men's Jacket</a></h3>
+                  <div class="price">$88.88</div>
+                </div>
+              </div>
+            </div>
+
+            
+          </div>
+        </div>
+
+        <hr />
+
+        <!-- Pagination -->
+        <nav aria-label="Page navigation example" class="d-flex justify-content-center mt-3">
+          <ul class="pagination">
+            <li class="page-item disabled">
+              <a class="page-link" href="#" aria-label="Previous">
+                <span aria-hidden="true">&laquo;</span>
+              </a>
+            </li>
+            <li class="page-item active"><a class="page-link" routerLink="/products">1</a></li>
+            <li class="page-item"><a class="page-link" routerLink="/products">2</a></li>
+            <li class="page-item"><a class="page-link" routerLink="/products">3</a></li>
+            <li class="page-item"><a class="page-link" routerLink="/products">4</a></li>
+            <li class="page-item"><a class="page-link" routerLink="/products">5</a></li>
+            <li class="page-item">
+              <a class="page-link" href="#" aria-label="Next">
+                <span aria-hidden="true">&raquo;</span>
+              </a>
+            </li>
+          </ul>
+        </nav>
+        <!-- Pagination -->
       </div>
     </div>
-    
-  </section>
+  </div>
+</section>
+<!-- Footer -->
+<!-- Footer -->
