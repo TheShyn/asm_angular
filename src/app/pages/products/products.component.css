@@ -2,13 +2,16 @@
     border-color: #3b71ca !important;
     background-color: white !important;
 }
-a.active{
+
+a.active {
     border-color: #000 !important;
 }
+
 .icon-hover:hover i {
     color: #3b71ca !important;
 }
+
 .accordion-button:focus {
     box-shadow: none !important;
     outline: none !important;
-  }
+}

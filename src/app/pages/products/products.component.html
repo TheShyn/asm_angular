@@ -46,36 +46,13 @@
                   <ul class="list-unstyled" style="margin-left: 20px;">
                     <li><a
                         style="font-size: 16px;padding:15px 8px; border-bottom: 1px solid #ccc; color:#6e757c !important"
-                        [routerLink]="['/products']" [queryParams]="{ v: 'a' }"
-                        class="active d-block text-dark text-decoration-none">Electronics </a></li>
-                    <li><a
+                        [routerLink]="['/products']" [queryParams]="{cate: 'all'}"
+                        class="active d-block text-dark text-decoration-none">All </a></li>
+
+                    <li *ngFor="let item of categories"><a
                         style="font-size: 16px;padding:15px 8px; border-bottom: 1px solid #ccc; color:#6e757c !important"
-                        [routerLink]="['/products']" [queryParams]="{ v: 'a' }"
-                        class="d-block text-dark text-decoration-none">Home items </a></li>
-                    <li><a
-                        style="font-size: 16px;padding:15px 8px; border-bottom: 1px solid #ccc; color:#6e757c !important"
-                        [routerLink]="['/products']" [queryParams]="{ v: 'a' }"
-                        class="d-block text-dark text-decoration-none">Books, Magazines </a></li>
-                    <li><a
-                        style="font-size: 16px;padding:15px 8px; border-bottom: 1px solid #ccc; color:#6e757c !important"
-                        [routerLink]="['/products']" [queryParams]="{ v: 'a' }"
-                        class="d-block text-dark text-decoration-none">Men's clothing </a></li>
-                    <li><a
-                        style="font-size: 16px;padding:15px 8px; border-bottom: 1px solid #ccc; color:#6e757c !important"
-                        [routerLink]="['/products']" [queryParams]="{ v: 'a' }"
-                        class="d-block text-dark text-decoration-none">Interiors items </a></li>
-                    <li><a
-                        style="font-size: 16px;padding:15px 8px; border-bottom: 1px solid #ccc; color:#6e757c !important"
-                        [routerLink]="['/products']" [queryParams]="{ v: 'a' }"
-                        class="d-block text-dark text-decoration-none">Underwears </a></li>
-                    <li><a
-                        style="font-size: 16px;padding:15px 8px; border-bottom: 1px solid #ccc; color:#6e757c !important"
-                        [routerLink]="['/products']" [queryParams]="{ v: 'a' }"
-                        class="d-block text-dark text-decoration-none">Shoes for men </a></li>
-                    <li><a
-                        style="font-size: 16px;padding:15px 8px; border-bottom: 1px solid #ccc; color:#6e757c !important"
-                        [routerLink]="['/products']" [queryParams]="{ v: 'a' }"
-                        class="d-block text-dark text-decoration-none">Accessories </a></li>
+                        [routerLink]="['/products']" [queryParams]="{ cate: item?.name }"
+                        class="active d-block text-dark text-decoration-none">{{item?.name}} </a></li>
                   </ul>
                 </div>
               </div>
@@ -252,7 +229,10 @@
       <div class="col-lg-9">
         <header class="d-sm-flex align-items-center border-bottom mb-4 pb-3">
           <strong class="d-block py-2">32 Items found </strong>
-          <div class="ms-auto d-flex gap-2">
+          <!-- input -->
+
+          <div class="ms-auto d-flex gap-2 align-items-center">
+
             <select class="form-select d-inline-block w-auto border pt-1">
               <option value="0">Best match</option>
               <option value="1">Recommended</option>
@@ -354,7 +334,9 @@
                     <li class="far fa-star"></li>
                   </ul>
                   <h3 style="width: 200px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"
-                    class="title"><a style="text-decoration: none;" href="#">{{item?.name}}</a></h3>
+                    class="title">
+                    <a style="text-decoration: none;" href="#">{{item?.name}}</a>
+                  </h3>
                   <div class="d-flex align-items-center gap-2">
 
                     <h2 class="price" style="margin:0">${{item?.price}}</h2>
