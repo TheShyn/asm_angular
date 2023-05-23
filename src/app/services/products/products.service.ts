@@ -46,7 +46,7 @@ export class ProductsService {
     return this.http.put<any>(url, product);
   }
 
-  deleteProduct(id: string): Observable<any> {
+  deleteProduct(id: string ): Observable<any> {
     const url = `${this.apiUrl}/${id}`;
     return this.http.delete<any>(url);
   }

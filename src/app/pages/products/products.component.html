@@ -299,7 +299,7 @@
                     <div class="col-xl-3 col-md-3 col-sm-5">
                       <div class="d-flex align-items-center gap-2">
                         <h2 class="price" style="margin:0;color:#ed1d24">${{item?.price}}</h2>
-                        <del style="color:#ccc">$88.88</del>
+                        <del *ngIf ='item?.discount > 0' style="color:#ccc">${{(item?.price * (item?.discount / 100)).toFixed(2)}}</del>
                       </div>
                       <h6 class="text-success">Free shipping</h6>
                       <div class="mt-4 d-flex ">
@@ -347,7 +347,7 @@
                   <div class="d-flex align-items-center gap-2">
 
                     <h2 class="price" style="margin:0">${{item?.price}}</h2>
-                    <del style="color:#ccc">$88.88</del>
+                    <del *ngIf ='item?.discount > 0' style="color:#ccc">${{(item?.price * (item?.discount / 100)).toFixed(2)}}</del>
                   </div>
                 </div>
               </div>
