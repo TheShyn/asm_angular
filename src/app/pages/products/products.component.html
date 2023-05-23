@@ -264,7 +264,8 @@
                   <div class="row g-0">
                     <div class="col-xl-3 col-md-4 d-flex justify-content-center">
                       <div class="bg-image hover-zoom ripple rounded ripple-surface me-md-3 mb-3 mb-md-0">
-                        <img src="https://bootstrap-ecommerce.com/bootstrap5-ecommerce/images/items/12.webp"
+                        <img [routerLink]="'/products/'+item?._id"
+                          src="https://bootstrap-ecommerce.com/bootstrap5-ecommerce/images/items/12.webp"
                           class="w-100" />
                         <a href="#!">
                           <div class="hover-overlay">
@@ -274,7 +275,8 @@
                       </div>
                     </div>
                     <div class="col-xl-6 col-md-5 col-sm-7">
-                      <h5 style="margin-bottom: 0; ">{{item?.categoryId?.name}}</h5>
+                      <h5 style="margin-bottom: 0; " [routerLink]="'/products/'+item?._id">{{item?.categoryId?.name}}
+                      </h5>
                       <h2
                         style="padding:0;margin:0; width: 400px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
                         {{item?.name}}</h2>
@@ -319,15 +321,15 @@
             <div *ngFor="let item of datas" class="col-md-3 col-sm-6 mb-3">
               <div class="product-grid" style="border-radius: 5px; overflow: hidden;">
                 <div class="product-image">
-                  <a href="#" class="image">
-                    <img class="pic-1" src="../../../assets/img/hat.png">
-                    <img class="pic-2" src="../../../assets/img/hat.png">
+                  <a [routerLink]="'/products/'+item?._id" class="image">
+                    <img [routerLink]="'/products/'+item?._id" class="pic-1" src="../../../assets/img/hat.png">
+                    <img [routerLink]="'/products/'+item?._id" class="pic-2" src="../../../assets/img/hat.png">
                   </a>
                   <ul class="product-links">
-                    <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                    <li><a href="#"><i class="far fa-heart"></i></a></li>
-                    <li><a href="#"><i class="fa fa-random"></i></a></li>
-                    <li><a href="#"><i class="fa fa-search"></i></a></li>
+                    <li><a [routerLink]="'/products/'+item?._id"><i class="fa fa-shopping-cart"></i></a></li>
+                    <li><a [routerLink]="'/products/'+item?._id"><i class="far fa-heart"></i></a></li>
+                    <li><a [routerLink]="'/products/'+item?._id"><i class="fa fa-random"></i></a></li>
+                    <li><a [routerLink]="'/products/'+item?._id"><i class="fa fa-search"></i></a></li>
                   </ul>
                 </div>
                 <div class="product-content">
@@ -340,7 +342,7 @@
                   </ul>
                   <h3 style="width: 200px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"
                     class="title">
-                    <a style="text-decoration: none;" href="#">{{item?.name}}</a>
+                    <a style="text-decoration: none;" [routerLink]="'/products/'+item?._id">{{item?.name}}</a>
                   </h3>
                   <div class="d-flex align-items-center gap-2">
 
