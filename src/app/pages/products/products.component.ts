@@ -10,15 +10,25 @@ import { ProductsService } from 'src/app/services/products/products.service';
   styleUrls: ['./products.component.css']
 })
 export class ProductsComponent implements OnInit {
+
+
   cate: string = ''
   categories: any = []
   all_datas: any = []
   datas: any = []
+  searchText: string = '';
   typeList: boolean = true
   constructor(private ProductsService: ProductsService, private CategoriesService: CategoriesService, private route: ActivatedRoute) {
 
   }
 
+
+
+  searchFunction() {
+    this.datas = this.all_datas.filter((item: any) => {
+      return item?.name.toLowerCase().includes(this.searchText)
+    })
+  }
   changeListColumn() {
     this.typeList = true
   }
@@ -66,6 +76,8 @@ export class ProductsComponent implements OnInit {
           this.filterProducts()
         }
       }
+
+
       )
   }
 
