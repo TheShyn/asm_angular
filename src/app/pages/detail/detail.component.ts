@@ -15,9 +15,11 @@ export class DetailComponent implements OnInit {
   all_datas:[] = []
   constructor(private route: ActivatedRoute, private ProductsService: ProductsService) { }
   ngOnInit(): void {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
     this.route.params.subscribe((params) => {
       this.id = params['id'];
       this.getProductById();
+     
     });
     this.ProductsService.getProducts().subscribe(
       (response: any) => {
@@ -29,20 +31,23 @@ export class DetailComponent implements OnInit {
       }
     )
     
+    
    
 
   }
   getRelateProducts(){
+    console.log(this.all_datas,this.product)
     this.relateProducts = this.all_datas.filter((item:any)=>{
-      return item.categoryId._id === this.product.categoryId._id && item._id !== this.product._id
+      return item?.categoryId?._id === this.product?.categoryId?._id && item?._id !== this.product?._id
     })
-    console.log(this.relateProducts)
+    // console.log(this.relateProducts)
   }
   getProductById() {
     this.ProductsService.getProduct(this.id).subscribe(
       (response) => {
         console.log(response)
         this.product = response.data
+        this.getRelateProducts()
       },
       (error) => {
         console.log(error)

@@ -46,7 +46,7 @@
                   <ul class="list-unstyled" style="margin-left: 20px;">
                     <li><a
                         style="font-size: 16px;padding:15px 8px; border-bottom: 1px solid #ccc; color:#6e757c !important"
-                        [routerLink]="['/products']" [queryParams]="{cate: 'all'}"
+                        [routerLink]="['/products']" [queryParams]="{page: 1}"
                         class="active d-block text-dark text-decoration-none">All </a></li>
 
                     <li *ngFor="let item of categories"><a
@@ -367,13 +367,9 @@
                 <span aria-hidden="true">&laquo;</span>
               </a>
             </li>
-            <li class="page-item active"><a class="page-link" routerLink="/products">1</a></li>
-            <li class="page-item"><a class="page-link" routerLink="/products">2</a></li>
-            <li class="page-item"><a class="page-link" routerLink="/products">3</a></li>
-            <li class="page-item"><a class="page-link" routerLink="/products">4</a></li>
-            <li class="page-item"><a class="page-link" routerLink="/products">5</a></li>
+            <li *ngFor ='let page of totalPages' class="page-item" routerLink="/products" [queryParams]="{page: page}"><a class="page-link" routerLink="/products">{{page}}</a></li>
             <li class="page-item">
-              <a class="page-link" href="#" aria-label="Next">
+              <a  (click)="nextPage()" class="page-link" routerLink="/products" [queryParams]="{ page: currentPage} " aria-label="Next">
                 <span aria-hidden="true">&raquo;</span>
               </a>
             </li>
