@@ -13,6 +13,8 @@ import { DetailComponent } from './pages/detail/detail.component';
 import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
+import { LayoutClientComponent } from './layout/layout-client/layout-client.component';
+import { LayouAdminComponent } from './layout/admin/layou-admin/layou-admin.component';
 @NgModule({
   declarations: [
 
@@ -25,6 +27,8 @@ import { HttpClientModule } from '@angular/common/http';
     FooterComponent,
     DetailComponent,
     PageNotFoundComponent,
+    LayoutClientComponent,
+    LayouAdminComponent,
   ],
   imports: [
     FormsModule,
