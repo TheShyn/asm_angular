@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { LayouAdminComponent } from './layou-admin.component';
+import { ManaProductComponent } from './mana-product.component';
 
-describe('LayouAdminComponent', () => {
-  let component: LayouAdminComponent;
-  let fixture: ComponentFixture<LayouAdminComponent>;
+describe('ManaProductComponent', () => {
+  let component: ManaProductComponent;
+  let fixture: ComponentFixture<ManaProductComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ LayouAdminComponent ]
+      declarations: [ ManaProductComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(LayouAdminComponent);
+    fixture = TestBed.createComponent(ManaProductComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

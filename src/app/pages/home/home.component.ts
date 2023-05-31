@@ -11,6 +11,7 @@ export class HomeComponent {
   constructor(private ProductsService: ProductsService){
 
   }
+ 
 
   getProducts() {
     this.ProductsService.getProducts().subscribe(
