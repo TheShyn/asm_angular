@@ -299,7 +299,8 @@
                     <div class="col-xl-3 col-md-3 col-sm-5">
                       <div class="d-flex align-items-center gap-2">
                         <h2 class="price" style="margin:0;color:#ed1d24">${{item?.price}}</h2>
-                        <del *ngIf ='item?.discount > 0' style="color:#ccc">${{(item?.price * (item?.discount / 100)).toFixed(2)}}</del>
+                        <del *ngIf='item?.discount > 0' style="color:#ccc">${{(item?.price * (item?.discount /
+                          100)).toFixed(2)}}</del>
                       </div>
                       <h6 class="text-success">Free shipping</h6>
                       <div class="mt-4 d-flex ">
@@ -323,7 +324,8 @@
                 <div class="product-image">
                   <a [routerLink]="'/products/'+item?._id" class="image">
                     <img [routerLink]="'/products/'+item?._id" class="pic-1" src="../../../assets/img/hat.png">
-                    <img [routerLink]="'/products/'+item?._id" class="pic-2" src="../../../assets/img/hat-black-border.png">
+                    <img [routerLink]="'/products/'+item?._id" class="pic-2"
+                      src="../../../assets/img/hat-black-border.png">
                   </a>
                   <ul class="product-links">
                     <li><a [routerLink]="'/products/'+item?._id"><i class="fa fa-shopping-cart"></i></a></li>
@@ -347,7 +349,8 @@
                   <div class="d-flex align-items-center gap-2">
 
                     <h2 class="price" style="margin:0">${{item?.price}}</h2>
-                    <del *ngIf ='item?.discount > 0' style="color:#ccc">${{(item?.price * (item?.discount / 100)).toFixed(2)}}</del>
+                    <del *ngIf='item?.discount > 0' style="color:#ccc">${{(item?.price * (item?.discount /
+                      100)).toFixed(2)}}</del>
                   </div>
                 </div>
               </div>
@@ -367,9 +370,11 @@
                 <span aria-hidden="true">&laquo;</span>
               </a>
             </li>
-            <li *ngFor ='let page of totalPages' class="page-item" routerLink="/products" [queryParams]="{page: page}"><a class="page-link" routerLink="/products">{{page}}</a></li>
+            <li *ngFor='let page of totalPages' class="page-item" routerLink="/products" [queryParams]="{page: page}"><a
+                class="page-link" routerLink="/products">{{page}}</a></li>
             <li class="page-item">
-              <a  (click)="nextPage()" class="page-link" routerLink="/products" [queryParams]="{ page: currentPage} " aria-label="Next">
+              <a (click)="nextPage()" class="page-link" routerLink="/products" [queryParams]="{ page: currentPage} "
+                aria-label="Next">
                 <span aria-hidden="true">&raquo;</span>
               </a>
             </li>

@@ -67,7 +67,7 @@ export class ProductsComponent implements OnInit {
   }
 
   filterProducts() {
-    
+
     this.datas = this.all_datas.filter((item: any) => {
       return item?.categoryId?.name === this.cate
     })
@@ -80,7 +80,7 @@ export class ProductsComponent implements OnInit {
     this.ProductsService.getProducts().subscribe(
       (response: any) => {
         this.all_datas = response;
-       this.changePage()
+        this.changePage()
         // console.log(response);
       },
       (error: any) => {
