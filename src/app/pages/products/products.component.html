@@ -265,7 +265,7 @@
                     <div class="col-xl-3 col-md-4 d-flex justify-content-center">
                       <div class="bg-image hover-zoom ripple rounded ripple-surface me-md-3 mb-3 mb-md-0">
                         <img [routerLink]="'/products/'+item?._id"
-                          src="https://bootstrap-ecommerce.com/bootstrap5-ecommerce/images/items/12.webp"
+                          [src]="item?.img"
                           class="w-100" />
                         <a href="#!">
                           <div class="hover-overlay">
@@ -275,10 +275,10 @@
                       </div>
                     </div>
                     <div class="col-xl-6 col-md-5 col-sm-7">
-                      <h5 style="margin-bottom: 0; " [routerLink]="'/products/'+item?._id">{{item?.categoryId?.name}}
+                      <h5 style="margin-bottom: 0; font-size: 13px; font-style: italic; color:#6e757c" [routerLink]="'/products/'+item?._id">{{item?.categoryId?.name}}
                       </h5>
                       <h2
-                        style="padding:0;margin:0; width: 400px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
+                        style="padding:0;margin:0; width: 400px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; font-size: 20px;">
                         {{item?.name}}</h2>
                       <div class="d-flex flex-row">
                         <div class="text-warning mb-1 me-2">
@@ -298,7 +298,7 @@
                     </div>
                     <div class="col-xl-3 col-md-3 col-sm-5">
                       <div class="d-flex align-items-center gap-2">
-                        <h2 class="price" style="margin:0;color:#ed1d24">${{item?.price}}</h2>
+                        <h2 class="price" style="margin:0;color:#ed1d24; font-size: 20px;">${{item?.price}}</h2>
                         <del *ngIf ='item?.discount > 0' style="color:#ccc">${{(item?.price * (item?.discount / 100)).toFixed(2)}}</del>
                       </div>
                       <h6 class="text-success">Free shipping</h6>
@@ -322,8 +322,8 @@
               <div class="product-grid" style="border-radius: 5px; overflow: hidden;">
                 <div class="product-image">
                   <a [routerLink]="'/products/'+item?._id" class="image">
-                    <img [routerLink]="'/products/'+item?._id" class="pic-1" src="../../../assets/img/hat.png">
-                    <img [routerLink]="'/products/'+item?._id" class="pic-2" src="../../../assets/img/hat-black-border.png">
+                    <img [routerLink]="'/products/'+item?._id" class="pic-1" [src]="item?.img">
+                    <img [routerLink]="'/products/'+item?._id" class="pic-2" [src]="item?.imgs?.[1]">
                   </a>
                   <ul class="product-links">
                     <li><a [routerLink]="'/products/'+item?._id"><i class="fa fa-shopping-cart"></i></a></li>
