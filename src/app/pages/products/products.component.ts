@@ -3,7 +3,7 @@ import axios from 'axios';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CategoriesService } from 'src/app/services/categories/categories.service';
 import { ProductsService } from 'src/app/services/products/products.service';
-
+import { HttpErrorResponse } from '@angular/common/http';
 @Component({
   selector: 'app-products',
   templateUrl: './products.component.html',

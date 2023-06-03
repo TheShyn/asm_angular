@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { catchError, map, Observable, throwError } from 'rxjs';
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -38,6 +38,9 @@ export class ProductsService {
   }
 
   createProduct(product: any): Observable<any> {
+    const headers = new HttpHeaders({
+      'Content-Type': 'multipart/form-data'
+    });
     return this.http.post<any>(this.apiUrl, product);
   }
 

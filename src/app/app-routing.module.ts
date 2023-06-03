@@ -10,6 +10,7 @@ import { LayoutClientComponent } from './layout/layout-client/layout-client.comp
 import { AppLayoutComponent } from './layout/admin/layout/app.layout.component';
 import { DasboardComponent } from './pages/admin/dasboard/dasboard.component';
 import { ManaProductComponent } from './pages/admin/mana-product/mana-product.component';
+import { ManacateComponent } from './pages/admin/manacate/manacate.component';
 const routes: Routes = [
   {
     path: 'admin',
@@ -18,6 +19,7 @@ const routes: Routes = [
       {path: "", redirectTo: "dashboard", pathMatch: "full"},
       {path: "dashboard", component: DasboardComponent},
       {path: "managementProduct", component: ManaProductComponent},
+      {path: "managementCategories", component: ManacateComponent},
     ]
   },
   {

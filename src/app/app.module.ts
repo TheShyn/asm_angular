@@ -25,6 +25,19 @@ import { StyleClassModule } from 'primeng/styleclass';
 import { PanelMenuModule } from 'primeng/panelmenu';
 import { ManaProductComponent } from './pages/admin/mana-product/mana-product.component';
 import { InputTextModule } from 'primeng/inputtext';
+import { CommonModule } from '@angular/common';
+import { FileUploadModule } from 'primeng/fileupload';
+import { RippleModule } from 'primeng/ripple';
+import { ToastModule } from 'primeng/toast';
+import { ToolbarModule } from 'primeng/toolbar';
+import { RatingModule } from 'primeng/rating';
+import { InputTextareaModule } from 'primeng/inputtextarea';
+import { DropdownModule } from 'primeng/dropdown';
+import { RadioButtonModule } from 'primeng/radiobutton';
+import { InputNumberModule } from 'primeng/inputnumber';
+import { DialogModule } from 'primeng/dialog';
+import { ManacateComponent } from './pages/admin/manacate/manacate.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -39,6 +52,7 @@ import { InputTextModule } from 'primeng/inputtext';
     LayoutClientComponent,
     DasboardComponent,
     ManaProductComponent,
+    ManacateComponent,
   ],
   imports: [
     FormsModule,
@@ -54,7 +68,18 @@ import { InputTextModule } from 'primeng/inputtext';
     TableModule,
     StyleClassModule,
     PanelMenuModule,
-    InputTextModule
+    InputTextModule,
+    DialogModule,
+    CommonModule,
+    FileUploadModule,
+    RippleModule,
+    ToastModule,
+    ToolbarModule,
+    RatingModule,
+    InputTextareaModule,
+    InputNumberModule,
+    RadioButtonModule,
+    DropdownModule
   ],
   providers: [],
   bootstrap: [AppComponent]
