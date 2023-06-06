@@ -3,6 +3,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { MessageService } from 'primeng/api';
 import { AuthService } from 'src/app/services/auth/auth.service';
+import { LocaStoreService } from 'src/app/services/localStore/loca-store.service';
 
 
 @Component({
@@ -12,7 +13,7 @@ import { AuthService } from 'src/app/services/auth/auth.service';
   providers: [MessageService]
 })
 export class RegisterComponent {
-  constructor(private AuthService: AuthService, private router: Router, private messageService: MessageService) {
+  constructor(private AuthService: AuthService, private router: Router, private messageService: MessageService, private LocaStoreService:LocaStoreService) {
 
   }
   dataUpload: any = {}

@@ -5,6 +5,7 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { MessageService } from 'primeng/api';
 import { Router } from '@angular/router';
+import { LocaStoreService } from 'src/app/services/localStore/loca-store.service';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -12,7 +13,7 @@ import { Router } from '@angular/router';
   providers: [MessageService]
 })
 export class LoginComponent {
-  constructor(private AuthService: AuthService, private messageService:MessageService, private router:Router) {
+  constructor(private AuthService: AuthService, private messageService:MessageService, private router:Router, private LocaStoreService:LocaStoreService) {
 
   }
   dataUpload: any = {}
@@ -34,7 +35,7 @@ export class LoginComponent {
             name : response.user.name,
             id : response.user.id
           }
-          localStorage.setItem('userInfor',JSON.stringify(a))
+          this.LocaStoreService.setStore('userInfor',a)
 
           this.messageService.add({ severity: 'success', summary: 'Successful', detail: 'Login successfully', life: 2000 });
           if(response.user.role=== 'user'){
