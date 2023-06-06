@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';;
 import { LoginComponent } from './auth/login/login.component';
@@ -37,6 +37,7 @@ import { RadioButtonModule } from 'primeng/radiobutton';
 import { InputNumberModule } from 'primeng/inputnumber';
 import { DialogModule } from 'primeng/dialog';
 import { ManacateComponent } from './pages/admin/manacate/manacate.component';
+import { FormBuilder } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -79,7 +80,8 @@ import { ManacateComponent } from './pages/admin/manacate/manacate.component';
     InputTextareaModule,
     InputNumberModule,
     RadioButtonModule,
-    DropdownModule
+    DropdownModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
