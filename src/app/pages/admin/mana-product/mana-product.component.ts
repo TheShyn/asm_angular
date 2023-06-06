@@ -1,3 +1,4 @@
+import { UploadImgService } from './../../../services/upload/upload-img.service';
 import { ProductsService } from 'src/app/services/products/products.service';
 import { Component } from '@angular/core';
 import { MessageService } from 'primeng/api';
@@ -21,7 +22,7 @@ export class ManaProductComponent {
 
   product: any = {};
 
-  files:any = []
+  files: any = []
 
   selectedProducts: any[] = [];
 
@@ -35,12 +36,16 @@ export class ManaProductComponent {
 
   dataUp: any
   rowsPerPageOptions = [5, 10, 20];
-  constructor(private ProductsService: ProductsService, private CategoriesService: CategoriesService, private messageService: MessageService) { }
+  constructor(private UploadImgService: UploadImgService, private ProductsService: ProductsService, private CategoriesService: CategoriesService, private messageService: MessageService) { }
   ngOnInit() {
     this.ProductsService.getProducts().subscribe(
       (response) => {
         this.products = response
         // console.log(response)
+      },
+      (error)=>{
+        console.log(error)
+        
       }
     )
     this.CategoriesService.getAllCategories().subscribe(
@@ -51,24 +56,22 @@ export class ManaProductComponent {
         })
       }
     )
-    
+
 
   }
   openNew() {
     this.product = {};
-    this.category=''
+    this.category = ''
     console.log(this.product)
     this.submitted = false;
     this.productDialog = true;
   }
 
-  onChangeFile(event:any){
-    this.files = event.files;
+  onChangeFile(event: any) {
     for (let i = 0; i < event.files.length; i++) {
-      this.formData.append('imgs', event.files[i], event.files[i].name);
-      
+      this.formData.append('files', event.files[i], event.files[i].name);
+
     }
-    console.log(this.formData.getAll('imgs'));
 
   }
 
@@ -80,7 +83,7 @@ export class ManaProductComponent {
     this.product = { ...product };
     this.category = product?.categoryId?.name
     this.productDialog = true;
-    
+
   }
 
   deleteProduct(product: any) {
@@ -98,43 +101,113 @@ export class ManaProductComponent {
   confirmDelete() {
     this.deleteProductDialog = false;
     this.products = this.products.filter(val => val._id !== this.product._id);
-    this.messageService.add({ severity: 'success', summary: 'Successful', detail: 'Product Deleted', life: 3000 });
-    this.product = {};
+    this.ProductsService.deleteProduct(this.product._id).subscribe(
+      (response)=>{
+        console.log(response)
+        this.messageService.add({ severity: 'success', summary: 'Successful', detail: 'Product Deleted', life: 3000 });
+        this.product = {};
+      },
+      (error)=>{
+        console.log(error)
+      }
+    )
   }
 
   hideDialog() {
     this.productDialog = false;
     this.submitted = false;
+    this.formData = new FormData();
   }
-
   saveProduct() {
     this.submitted = true;
     // console.log(this.category)
-    console.log(this.product)
-    console.log(typeof this.formData)
-    // console.log(this.categories)
-    // console.log(this.categories.filter((item:any)=>item.label === this.category))
-    this.formData.append("name", 'Product Awqeqweq1')
-    this.formData.append("categoryId", "642f40c18d53ccc72a3af5d8")
-    this.formData.append("description", "31231")
-    this.formData.append("price", '123')
-    // if(this.category){
-    //   this.dataUp = {
-    //     ...this.product,
-    //     categoryId: this.categories.filter((item:any)=>item.label === this.category)[0].value,
-    //     imgs:this.formData
-    //   }
+
+    if (this.product._id) {
+      console.log(this.formData.getAll("files"))
+      this.UploadImgService.Upload(this.formData).subscribe(
+        (response) => {
+          this.dataUp = {
+            name: this.product.name,
+            price: this.product.price,
+            description: this.product.description,
+            categoryId: this.category && this.categories.filter((item: any) => item.label === this.category)[0].value,
+            imgs: response?.secure_urls,
+            discount: this.product.discount
+          }
+          this.ProductsService.updateProduct(`${this.product._id}`, this.dataUp).subscribe(
+            (response1) => {
+              console.log(response?.secure_urls)
+              console.log(this.product)
+              this.products[this.findIndexById(this.product._id)] = {
+                ...this.dataUp,
+                categoryId: {
+                  _id: response1.data.categoryId,
+                  name: this.category && this.categories.filter((item: any) => item.label === this.category)[0].label
+                },
+                imgs: response1.data.imgs,
+                img: response1.data.img,
+                _id: this.product._id,
+              }
+              this.formData = new FormData()
+              this.messageService.add({ severity: 'success', summary: 'Successful', detail: 'Upload product successfully', life: 3000 });
+
+              // console.log(this.findIndexById(this.product._id))
+              console.log(response1)
+              this.productDialog = false;
+            },
+            (error) => {
+            this.messageService.add({ severity: 'error', summary: 'Error', detail: error.error.message });
+
+              console.log(error)
+            }
+          )
+        },
+        (error) => {
+          console.log(error)
+        }
+      )
       
-    // }
-    this.ProductsService.createProduct(this.formData).subscribe(
-      (response:any)=>{ 
-        console.log(response)
-      },
-      (error:any)=>{
-        console.log(error.error.message )
-        this.messageService.add({ severity: 'error', summary: 'Error', detail: error.error.message });
-      }
-    )
+    } else {
+      this.UploadImgService.Upload(this.formData).subscribe(
+        (response) => {
+          if (!response?.secure_urls.length) {
+            this.messageService.add({ severity: 'error', summary: 'Error', detail: "You need to upload Img" });
+
+          }
+          this.dataUp = {
+            ...this.product,
+            categoryId: this.category && this.categories.filter((item: any) => item.label === this.category)[0].value,
+            imgs: response?.secure_urls
+          }
+          console.log(this.dataUp)
+          this.ProductsService.createProduct(this.dataUp).subscribe(
+            (response: any) => {
+              this.formData = new FormData();
+              console.log(response)
+              this.messageService.add({ severity: 'success', summary: 'Successful', detail: 'Upload product successfully', life: 3000 });
+              this.ProductsService.getProducts().subscribe(
+                (responseData) => {
+                  this.products = responseData
+                  // console.log(response)
+                }
+              )
+            },
+            (error: any) => {
+              console.log(error)
+              this.messageService.add({ severity: 'error', summary: 'Error', detail: error.error.message });
+            }
+          )
+        },
+        (error) => {
+          console.log(error)
+        }
+      )
+
+    }
+
+
+
+
   }
 
 
@@ -142,7 +215,7 @@ export class ManaProductComponent {
   findIndexById(id: string): number {
     let index = -1;
     for (let i = 0; i < this.products.length; i++) {
-      if (this.products[i].id === id) {
+      if (this.products[i]._id === id) {
         index = i;
         break;
       }
