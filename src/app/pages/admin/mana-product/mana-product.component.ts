@@ -33,15 +33,17 @@ export class ManaProductComponent {
   category: any = ''
 
   categories: any[] = [];
-
+  
   dataUp: any
   rowsPerPageOptions = [5, 10, 20];
   constructor(private UploadImgService: UploadImgService, private ProductsService: ProductsService, private CategoriesService: CategoriesService, private messageService: MessageService) { }
   ngOnInit() {
     this.ProductsService.getProducts().subscribe(
       (response) => {
+        console.log("dadasdas")
         this.products = response
-        // console.log(response)
+        console.log(response)
+        
       },
       (error)=>{
         console.log(error)
@@ -174,6 +176,7 @@ export class ManaProductComponent {
             this.messageService.add({ severity: 'error', summary: 'Error', detail: "You need to upload Img" });
 
           }
+          console.log(response?.secure_urls)
           this.dataUp = {
             ...this.product,
             categoryId: this.category && this.categories.filter((item: any) => item.label === this.category)[0].value,
