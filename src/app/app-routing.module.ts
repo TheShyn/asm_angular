@@ -11,6 +11,7 @@ import { AppLayoutComponent } from './layout/admin/layout/app.layout.component';
 import { DasboardComponent } from './pages/admin/dasboard/dasboard.component';
 import { ManaProductComponent } from './pages/admin/mana-product/mana-product.component';
 import { ManacateComponent } from './pages/admin/manacate/manacate.component';
+import { CartComponent } from './pages/cart/cart.component';
 const routes: Routes = [
   {
     path: 'admin',
@@ -29,6 +30,7 @@ const routes: Routes = [
       {path: "", redirectTo: "home", pathMatch: "full"},
       {path: "home", component: HomeComponent},
       {path: "login", component: LoginComponent},
+      {path: "cart", component: CartComponent},
       {path: "register", component: RegisterComponent},
       { path: 'products', component: ProductsComponent },
       { path: 'products/:id', component: DetailComponent },

@@ -38,6 +38,7 @@ import { InputNumberModule } from 'primeng/inputnumber';
 import { DialogModule } from 'primeng/dialog';
 import { ManacateComponent } from './pages/admin/manacate/manacate.component';
 import { FormBuilder } from '@angular/forms';
+import { CartComponent } from './pages/cart/cart.component';
 
 @NgModule({
   declarations: [
@@ -54,6 +55,7 @@ import { FormBuilder } from '@angular/forms';
     DasboardComponent,
     ManaProductComponent,
     ManacateComponent,
+    CartComponent,
   ],
   imports: [
     FormsModule,
