@@ -19,5 +19,16 @@ export class CategoriesService {
     return this.http.get(this.apiUrl + `/${id}`)
 
   }
+  deleteCate(id: number | string) {
+    return this.http.delete(this.apiUrl + `/${id}`)
 
+  }
+  createCate(data: any) {
+    return this.http.post(this.apiUrl, data)
+
+  }
+  updateCate(id: number | string, data: any) {
+    return this.http.patch(this.apiUrl + `/${id}`, data)
+
+  }
 }

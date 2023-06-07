@@ -31,16 +31,16 @@ export class ManacateComponent {
 
   dataUp: any
   rowsPerPageOptions = [5, 10, 20];
-  constructor(private ProductsService: ProductsService, private CategoriesService: CategoriesService, private messageService: MessageService) { }
+  constructor(private CategoriesService: CategoriesService, private messageService: MessageService) { }
   ngOnInit() {
     this.CategoriesService.getAllCategories().subscribe(
-      (response:any) => {
+      (response: any) => {
         this.categories = response.data
         // console.log(response)
       }
     )
 
-    
+
 
   }
   openNew() {
@@ -58,7 +58,7 @@ export class ManacateComponent {
   editProduct(product: any) {
     this.category = { ...product };
     this.productDialog = true;
-    
+
   }
 
   deleteProduct(product: any) {
@@ -76,8 +76,16 @@ export class ManacateComponent {
   confirmDelete() {
     this.deleteProductDialog = false;
     this.categories = this.categories.filter(val => val._id !== this.category._id);
-    this.messageService.add({ severity: 'success', summary: 'Successful', detail: 'Product Deleted', life: 3000 });
-    this.category = {};
+    this.CategoriesService.deleteCate(this.category._id).subscribe(
+      (response) => {
+        console.log(response)
+        this.messageService.add({ severity: 'success', summary: 'Successful', detail: 'Category Deleted', life: 3000 });
+        this.category = {};
+      },
+      (error) => {
+        console.log(error)
+      }
+    )
   }
 
   hideDialog() {
@@ -87,7 +95,44 @@ export class ManacateComponent {
 
   saveProduct() {
     this.submitted = true;
-    
+    if (this.category._id) {
+      const data = {
+        name: this.category.name,
+      }
+      this.CategoriesService.updateCate(this.category._id, data).subscribe(
+        (response) => {
+          console.log(response)
+          const localCate = this.findIndexById(this.category._id)
+          this.categories[localCate] = {
+            ...this.categories[localCate],
+            name: this.category.name,
+          }
+
+          this.messageService.add({ severity: 'success', summary: 'Successful', detail: 'Upload categories successfully', life: 3000 });
+          this.productDialog = false;
+        },
+        (error) => {
+          console.log(error)
+          this.messageService.add({ severity: 'error', summary: 'Error', detail: error.error.message });
+        }
+      )
+    } else {
+      if (this.category.name) {
+        this.CategoriesService.createCate(this.category).subscribe(
+          (response: any) => {
+            console.log(response)
+            this.categories.push(response.data[0])
+            this.messageService.add({ severity: 'success', summary: 'Successful', detail: 'add categories successfully', life: 3000 });
+            this.productDialog = false;
+          },
+          (error) => {
+            console.log(error)
+            this.messageService.add({ severity: 'error', summary: 'Error', detail: error.error.message });
+          }
+        )
+
+      }
+    }
   }
 
 
@@ -95,7 +140,7 @@ export class ManacateComponent {
   findIndexById(id: string): number {
     let index = -1;
     for (let i = 0; i < this.categories.length; i++) {
-      if (this.categories[i].id === id) {
+      if (this.categories[i]._id === id) {
         index = i;
         break;
       }

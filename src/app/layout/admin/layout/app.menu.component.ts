@@ -24,7 +24,8 @@ export class AppMenuComponent implements OnInit {
                 label: 'Management Services',
                 items: [
                     { label: 'Products', icon: 'pi pi-fw pi-id-card', routerLink: ['/admin/managementProduct'] },
-                   
+                    { label: 'Categories', icon: 'pi pi-fw pi-id-card', routerLink: ['/admin/managementCategories'] },
+
                 ]
             },
             {
