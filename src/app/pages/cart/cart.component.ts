@@ -13,6 +13,7 @@ import { LocaStoreService } from 'src/app/services/localStore/loca-store.service
 export class CartComponent {
   cart: Array<any> = []
   quantity: number = 1
+  total:any
   constructor(private cartService: CartsService, private LocaStoreService: LocaStoreService, private router: Router, private messageService: MessageService) {
 
   }
@@ -25,6 +26,7 @@ export class CartComponent {
       this.cartService.editCart(item._id,{quantity:item.quantity}).subscribe(
         (response)=>{
           console.log(response)
+          this.checkTotal(this.cart)
         },
         (error)=>{
           console.log(error)
@@ -38,6 +40,7 @@ export class CartComponent {
     this.cartService.editCart(item._id,{quantity:item.quantity}).subscribe(
       (response)=>{
         console.log(response)
+        this.checkTotal(this.cart)
       },
       (error)=>{
         console.log(error)
@@ -48,12 +51,21 @@ export class CartComponent {
     this.cartService.deleteCart(item._id).subscribe(
       (response)=>{
         this.cart = this.cart.filter((data:any)=> data._id != item._id)
+        this.checkTotal(this.cart)
       },
       (error)=>{
 
       }
     )
 
+  }
+  checkTotal(data:any){
+    this.total = data.map((item:any)=>{
+      if(item.discount > 0){
+        return (item.price * (item.discount/ 100)) * item.quantity
+      }
+      return item.price * item.quantity
+    }).reduce((initValue:any, item:any)=> item + initValue)
   }
   ngOnInit() {
     console.log("dasd")
@@ -68,6 +80,8 @@ export class CartComponent {
           (response: any) => {
             console.log(response)
             this.cart = response.data
+            this.checkTotal(this.cart)
+            console.log(this.total)
 
           },
           (error: any) => {
