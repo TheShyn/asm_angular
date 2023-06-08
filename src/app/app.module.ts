@@ -40,6 +40,7 @@ import { ManacateComponent } from './pages/admin/manacate/manacate.component';
 import { FormBuilder } from '@angular/forms';
 import { CartComponent } from './pages/cart/cart.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,

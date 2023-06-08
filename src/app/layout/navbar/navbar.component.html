@@ -1,4 +1,5 @@
-<nav style="background-image: none; background-color: rgba(255, 255, 255, 0.85);z-index: 1;" class="navbar navbar-expand-lg navbar-light fixed-top py-3 d-block" data-navbar-on-scroll="data-navbar-on-scroll">
+<nav style="background-image: none; background-color: rgba(255, 255, 255, 0.85);z-index: 1;"
+    class="navbar navbar-expand-lg navbar-light fixed-top py-3 d-block" data-navbar-on-scroll="data-navbar-on-scroll">
     <div class="container"><a class="navbar-brand d-inline-flex" href=""><img class="d-inline-block"
                 src="assets/img/logo.png" alt="logo" /><span
                 class="text-1000 fs-0 fw-bold ms-2">Majestic</span></a><button class="navbar-toggler collapsed"
@@ -11,8 +12,8 @@
                         href="/products">Shop</a></li>
                 <!-- <li class="nav-item px-2"><a class="nav-link fw-medium" >Women</a></li>
                 <li class="nav-item px-2"><a class="nav-link fw-medium">Men</a></li> -->
-                <li class="nav-item px-2"><a class="nav-link fw-medium" >Collection</a></li>
-                <li class="nav-item px-2"><a class="nav-link fw-medium" >Outlet</a></li>
+                <li class="nav-item px-2"><a class="nav-link fw-medium">Collection</a></li>
+                <li class="nav-item px-2"><a class="nav-link fw-medium">Outlet</a></li>
             </ul>
             <form class="d-flex">
                 <a class="text-1000" href="">
@@ -42,14 +43,9 @@
                         <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
                         <circle cx="12" cy="7" r="4"></circle>
                     </svg></a>
-                <a class="text-1000" href=""> <svg class="feather feather-heart me-3"
-                        xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
-                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <path
-                            d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z">
-                        </path>
-                    </svg>
-                </a>
+                
+                <p *ngIf="check" (click)="logout()" class="mt-1"> <i class="pi pi-sign-out"></i></p>
+
             </form>
         </div>
     </div>
