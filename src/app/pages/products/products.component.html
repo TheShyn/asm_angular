@@ -264,7 +264,7 @@
                   <div class="row g-0">
                     <div class="col-xl-3 col-md-4 d-flex justify-content-center">
                       <div class="bg-image hover-zoom ripple rounded ripple-surface me-md-3 mb-3 mb-md-0">
-                        <img [routerLink]="'/products/'+item?._id" [src]="item?.img" class="w-100" />
+                        <img style="cursor: pointer;" [routerLink]="'/products/'+item?._id" [src]="item?.img" class="w-100" />
                         <a href="#!">
                           <div class="hover-overlay">
                             <div class="mask" style="background-color: rgba(253, 253, 253, 0.15);"></div>
@@ -273,7 +273,7 @@
                       </div>
                     </div>
                     <div class="col-xl-6 col-md-5 col-sm-7">
-                      <h5 style="margin-bottom: 0; font-size: 13px; font-style: italic; color:#6e757c"
+                      <h5 style="margin-bottom: 0; font-size: 13px; font-style: italic; color:#6e757c; cursor: pointer;"
                         [routerLink]="'/products/'+item?._id">{{item?.categoryId?.name}}
                       </h5>
                       <h2
@@ -292,7 +292,7 @@
                       </div>
 
                       <p class="text mb-4 mb-md-0">
-                        {{item?.description.slice(0, 180)}}...
+                        {{item?.description.length > 180 ? item?.description.slice(0, 180) + "..." : item?.description}}
                       </p>
                     </div>
                     <div class="col-xl-3 col-md-3 col-sm-5">
@@ -324,7 +324,7 @@
                   <a [routerLink]="'/products/'+item?._id" class="image">
 
                     <img [routerLink]="'/products/'+item?._id" class="pic-1" [src]="item?.img">
-                    <img [routerLink]="'/products/'+item?._id" class="pic-2" [src]="item?.imgs?.[1]">
+                    <img [routerLink]="'/products/'+item?._id" class="pic-2" [src]="item.imgs[1] ||item.imgs[0] ">
                   </a>
                   <ul class="product-links">
                     <li><a [routerLink]="'/products/'+item?._id"><i class="fa fa-shopping-cart"></i></a></li>

@@ -1,6 +1,8 @@
+import { CartsService } from './../../services/carts/carts.service';
+import { LocaStoreService } from 'src/app/services/localStore/loca-store.service';
 import { ProductsService } from 'src/app/services/products/products.service';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import axios from 'axios'
 import { IProduct } from 'src/common/product';
 @Component({
@@ -13,7 +15,63 @@ export class DetailComponent implements OnInit {
   product:any = {}
   relateProducts: any[] = []
   all_datas:[] = []
-  constructor(private route: ActivatedRoute, private ProductsService: ProductsService) { }
+  currentImg:string = this.product.img
+  quantity:any = 1
+  constructor(
+    private route: ActivatedRoute, 
+    private ProductsService: ProductsService,
+    private LocaStoreService:LocaStoreService,
+    private router : Router,
+    private CartsService: CartsService
+    
+    ) { }
+
+  changeImage(imgChoice:any){
+    this.currentImg = imgChoice
+  }
+
+  addToCart(){
+    this.LocaStoreService.getStore("userInfor").subscribe(
+      (response)=>{
+        // console.log(response)
+        if(!response.accessToken){
+          this.router.navigate(['/login'])
+        }
+        const dataCart = {
+          name:this.product.name,
+          discount:this.product.discount,
+          img:this.product.img,
+          product: this.product._id,
+          userId: response.id,
+          quantity:this.quantity,
+          price: this.product.price
+        }
+        this.CartsService.addToCart(dataCart).subscribe(
+          (response2:any)=>{
+            console.log(response2)
+            this.CartsService.getcartUser(response.id).subscribe(
+              (response:any)=>{
+                localStorage.setItem("cart",JSON.stringify(response.data))
+                this.router.navigate(['/cart'])
+              },
+              (error:any)=>{
+                console.log(error)
+              }
+            )
+          },
+          (error)=>{
+            console.log(error)
+          }
+        )
+        
+      },
+      (error)=>{
+        console.log(error)
+      }
+    )
+    
+
+  }
   ngOnInit(): void {
     window.scrollTo({ top: 0, behavior: 'smooth' });
     this.route.params.subscribe((params) => {

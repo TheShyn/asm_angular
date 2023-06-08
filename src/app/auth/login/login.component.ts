@@ -6,6 +6,7 @@ import { AuthService } from 'src/app/services/auth/auth.service';
 import { MessageService } from 'primeng/api';
 import { Router } from '@angular/router';
 import { LocaStoreService } from 'src/app/services/localStore/loca-store.service';
+import { CartsService } from 'src/app/services/carts/carts.service';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -13,7 +14,13 @@ import { LocaStoreService } from 'src/app/services/localStore/loca-store.service
   providers: [MessageService]
 })
 export class LoginComponent {
-  constructor(private AuthService: AuthService, private messageService:MessageService, private router:Router, private LocaStoreService:LocaStoreService) {
+  constructor(
+    private AuthService: AuthService,
+    private messageService: MessageService,
+    private router: Router,
+    private LocaStoreService: LocaStoreService,
+    private CartsService: CartsService
+    ) {
 
   }
   dataUpload: any = {}
@@ -24,27 +31,37 @@ export class LoginComponent {
   }
   onsubmit() {
     this.submitted = true
-    
-    if (this.dataUpload.email && this.dataUpload.password) {
+
+    if (this.dataUpload.email && this.dataUpload.password && this.isEmail(this.dataUpload.email)) {
       this.AuthService.checkLogin(this.dataUpload).subscribe(
-        (response:any)=>{
-          console.log( response)
-          const a = { 
-            accessToken : response.accessToken,
-            email : response.user.email,
-            name : response.user.name,
-            id : response.user.id
+        (response: any) => {
+          console.log(response)
+          const a = {
+            accessToken: response.accessToken,
+            email: response.user.email,
+            name: response.user.name,
+            id: response.user._id
           }
-          this.LocaStoreService.setStore('userInfor',a)
+          this.LocaStoreService.setStore('userInfor', a)
 
           this.messageService.add({ severity: 'success', summary: 'Successful', detail: 'Login successfully', life: 2000 });
-          if(response.user.role=== 'user'){
-            setTimeout(()=>this.router.navigate(['/home']),2000)
-          } else{
-            setTimeout(()=>this.router.navigate(['/admin']),2000)
+          if (response.user.role === 'user') {
+            setTimeout(() => this.router.navigate(['/home']), 2000)
+          } else {
+            setTimeout(() => this.router.navigate(['/admin']), 2000)
           }
+          this.CartsService.getcartUser(response.user._id).subscribe(
+            (response1:any) => {
+              console.log(response1)
+              
+              this.LocaStoreService.setStore('cart', response1.data)
+            },
+            (error)=>{
+              console.log(error)
+            }
+          )
         },
-        (error)=>{
+        (error) => {
           console.log(error);
           this.messageService.add({ severity: 'error', summary: 'Error', detail: error.error.message });
         }

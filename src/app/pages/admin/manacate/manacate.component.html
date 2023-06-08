@@ -36,7 +36,6 @@
                         </th>
                         <th pSortableColumn="code">Code <p-sortIcon field="code"></p-sortIcon></th>
                         <th pSortableColumn="name">Name <p-sortIcon field="name"></p-sortIcon></th>
-                        <th pSortableColumn="name">Products <p-sortIcon field="name"></p-sortIcon></th>
                         <th pSortableColumn="inventoryStatus">Status <p-sortIcon field="inventoryStatus"></p-sortIcon>
                         </th>
                         <th>action</th>
@@ -54,10 +53,6 @@
                             <span class="p-column-title">Name</span>
                             {{product.name}}
                         </td>
-                        <td style="width:14%; min-width:10rem;">
-                            <span class="p-column-title">Name</span>
-                            {{product.products.length}}
-                        </td>
                         <td style="width:14%; min-width: 10rem;"><span class="p-column-title">Status</span>
                             <span>enable</span>
                         </td>
@@ -67,7 +62,7 @@
                                     class="p-button-rounded p-button-success mr-2"
                                     (click)="editProduct(product)"></button>
                                 <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-warning"
-                                    (click)="deleteProduct(product)"></button>
+                                    (click)="deleteProduct(product)" *ngIf="product._id !== '64353bbc9399e5feceb2f103'"></button>
                             </div>
                         </td>
                     </tr>
@@ -88,9 +83,9 @@
 
             </ng-template>
 
-            <ng-template pTemplate="footer">
+            <ng-template pTemplate="footer" let-product>
                 <button pButton pRipple label="Cancel" icon="pi pi-times" class="p-button-text"
-                    (click)="hideDialog()"></button>
+                    (click)="hideDialog()" ></button>
                 <button pButton pRipple label="Save" icon="pi pi-check" class="p-button-text"
                     (click)="saveProduct()"></button>
             </ng-template>

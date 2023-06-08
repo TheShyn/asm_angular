@@ -1,16 +1,13 @@
-<div class="container mb-5" style="margin-top: 120px;">
+<div class="container " style="margin-top: 120px">
   <div class="card" *ngIf="product">
     <div class="row g-0">
       <div class="col-md-6 border-end">
         <div class="d-flex flex-column justify-content-center">
-          <div class="main_image"> <img src="https://i.imgur.com/TAzli1U.jpg" id="main_product_image" width="350">
+          <div class="main_image"> <img [src]="currentImg || product.img" id="main_product_image" width="350">
           </div>
-          <div class="thumbnail_images">
+          <div class="thumbnail_images" style="overflow-x: scroll;">
             <ul id="thumbnail">
-              <li><img onclick="changeImage(this)" src="https://i.imgur.com/TAzli1U.jpg" width="70"></li>
-              <li><img onclick="changeImage(this)" src="https://i.imgur.com/w6kEctd.jpg" width="70"></li>
-              <li><img onclick="changeImage(this)" src="https://i.imgur.com/L7hFD8X.jpg" width="70"></li>
-              <li><img onclick="changeImage(this)" src="https://i.imgur.com/6ZufmNS.jpg" width="70"></li>
+              <li *ngFor="let data of product.imgs"><img (click)="changeImage(data)" [src]="data" width="70"></li>
             </ul>
           </div>
         </div>
@@ -40,8 +37,8 @@
             <div style="margin-top: 10px;" class="d-flex gap-3">
               <input min="1"
                 style="padding:10px;border-radius: 5px; max-width: 100px; border:1px solid #6e757c;outline: none; font-size: 16px;"
-                value="1" type="number">
-                <button class="btn" style="color:#ec6761;background-color: #ec6761;color:white">Add to Cart</button>
+                value="1" [(ngModel)]="quantity" [defaultValue]="quantity" type="number">
+                <button class="btn" style="color:#ec6761;background-color: #ec6761;color:white" (click)="addToCart()">Add to Cart</button>
             </div>
           </div>
         </div>
@@ -49,7 +46,7 @@
     </div>
   </div>
 
-  <div class="container">
+  <div class="container" style="margin-top: 30px;">
     <ul class="nav nav-tabs" id="myTab" role="tablist">
       <li class="nav-item" role="presentation">
         <button class="nav-link active" style="color: #333;" id="home-tab" data-bs-toggle="tab"
@@ -85,8 +82,8 @@
             <div class="product-grid" style="border-radius: 5px; overflow: hidden;">
               <div class="product-image">
                 <a [routerLink]="'/products/'+item?._id" class="image">
-                  <img [routerLink]="'/products/'+item?._id" class="pic-1" src="../../../assets/img/hat.png">
-                  <img [routerLink]="'/products/'+item?._id" class="pic-2" src="../../../assets/img/hat.png">
+                  <img [routerLink]="'/products/'+item?._id" class="pic-1" [src]="item.img">
+                  <img [routerLink]="'/products/'+item?._id" class="pic-2" [src]="item.imgs[1] ||item.imgs[0] ">
                 </a>
                 <ul class="product-links">
                   <li><a [routerLink]="'/products/'+item?._id"><i class="fa fa-shopping-cart"></i></a></li>

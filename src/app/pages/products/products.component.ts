@@ -21,7 +21,7 @@ export class ProductsComponent implements OnInit {
 
   //panigation
   currentPage: number = 1
-  itemsPerpage: number = 2
+  itemsPerpage: number = 4
 
   // totalsPage:number = Math.ceil(this.all_datas.length/ this.itemsPerpage )
 

@@ -40,7 +40,6 @@ export class ManaProductComponent {
   ngOnInit() {
     this.ProductsService.getProducts().subscribe(
       (response) => {
-        console.log("dadasdas")
         this.products = response
         console.log(response)
         
