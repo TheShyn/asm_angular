@@ -16,6 +16,10 @@ export class FeedbacksService {
     return this.http.get(this.apiUrl + `/${idProduct}`)
   }
 
+  addfeedbackOfProduct(data:any){
+    return this.http.post(this.apiUrl,data)
+  }
+
   deleteFeedback(id: number | string) {
     return this.http.delete(this.apiUrl + `/${id}`)
 

@@ -98,6 +98,7 @@ export class ManacateComponent {
     if (this.category._id) {
       const data = {
         name: this.category.name,
+        status: this.category.status
       }
       this.CategoriesService.updateCate(this.category._id, data).subscribe(
         (response) => {
@@ -106,6 +107,7 @@ export class ManacateComponent {
           this.categories[localCate] = {
             ...this.categories[localCate],
             name: this.category.name,
+            status: this.category.status
           }
 
           this.messageService.add({ severity: 'success', summary: 'Successful', detail: 'Upload categories successfully', life: 3000 });

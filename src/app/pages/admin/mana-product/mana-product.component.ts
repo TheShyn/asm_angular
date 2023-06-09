@@ -133,7 +133,8 @@ export class ManaProductComponent {
             description: this.product.description,
             categoryId: this.category && this.categories.filter((item: any) => item.label === this.category)[0].value,
             imgs: response?.secure_urls,
-            discount: this.product.discount
+            discount: this.product.discount,
+            status: this.product.status
           }
           this.ProductsService.updateProduct(`${this.product._id}`, this.dataUp).subscribe(
             (response1) => {
@@ -191,6 +192,7 @@ export class ManaProductComponent {
                 (responseData) => {
                   this.products = responseData
                   // console.log(response)
+                  this.productDialog = false;
                 }
               )
             },

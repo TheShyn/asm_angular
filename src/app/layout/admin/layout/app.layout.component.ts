@@ -1,3 +1,4 @@
+import { LocaStoreService } from './../../../services/localStore/loca-store.service';
 import { Component, OnDestroy, Renderer2, ViewChild } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import { filter, Subscription } from 'rxjs';
@@ -21,7 +22,7 @@ export class AppLayoutComponent implements OnDestroy {
 
     @ViewChild(AppTopBarComponent) appTopbar!: AppTopBarComponent;
 
-    constructor(public layoutService: LayoutService, public renderer: Renderer2, public router: Router) {
+    constructor(public layoutService: LayoutService, public renderer: Renderer2, public router: Router,private LocaStoreService:LocaStoreService) {
         this.overlayMenuOpenSubscription = this.layoutService.overlayOpen$.subscribe(() => {
             if (!this.menuOutsideClickListener) {
                 this.menuOutsideClickListener = this.renderer.listen('document', 'click', event => {
@@ -56,7 +57,22 @@ export class AppLayoutComponent implements OnDestroy {
                 this.hideProfileMenu();
             });
     }
+    ngOnInit(){
+        // this.LocaStoreService.getStore("userInfor").subscribe(
+        //     (response)=>{
+        //         console.log(response);
+        //         if(response.accessToken){
+        //             if(response.role !== "admin"){
+        //               this.router.navigate(['/home']);
+        //             }
 
+        //         }else{
+        //             this.router.navigate(['/login']);
+
+        //         }
+        //     }
+        //   )
+    }
     hideMenu() {
         this.layoutService.state.overlayMenuActive = false;
         this.layoutService.state.staticMenuMobileActive = false;

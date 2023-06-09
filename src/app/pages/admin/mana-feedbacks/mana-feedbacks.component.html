@@ -5,8 +5,6 @@
             <p-toolbar styleClass="mb-4">
                 <ng-template pTemplate="left">
                     <div class="my-2">
-                        <button pButton pRipple label="New" icon="pi pi-plus" class="p-button-success mr-2"
-                            (click)="openNew()"></button>
                         <button pButton pRipple label="Delete" icon="pi pi-trash" class="p-button-danger"
                             (click)="deleteSelectedProducts()"
                             [disabled]="!selectedProducts || !selectedProducts.length"></button>
@@ -14,7 +12,7 @@
                 </ng-template>
             </p-toolbar>
 
-            <p-table #dt [value]="categories" [columns]="cols" responsiveLayout="scroll" [rows]="10"
+            <p-table #dt [value]="feedbacks" [columns]="cols" responsiveLayout="scroll" [rows]="10"
                 [globalFilterFields]="['name','country.name','representative.name','status']" [paginator]="true"
                 [rowsPerPageOptions]="[10,20,30]" [showCurrentPageReport]="true"
                 currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
@@ -36,6 +34,7 @@
                         </th>
                         <th pSortableColumn="code">Code <p-sortIcon field="code"></p-sortIcon></th>
                         <th pSortableColumn="name">Name <p-sortIcon field="name"></p-sortIcon></th>
+                        <th pSortableColumn="name">Content <p-sortIcon field="name"></p-sortIcon></th>
                         <th pSortableColumn="inventoryStatus">Status <p-sortIcon field="inventoryStatus"></p-sortIcon>
                         </th>
                         <th>action</th>
@@ -53,14 +52,18 @@
                             <span class="p-column-title">Name</span>
                             {{product.name}}
                         </td>
+                        <td style="width:14%; min-width:10rem;">
+                            <span class="p-column-title">Name</span>
+                            {{product.content}}
+                        </td>
                         <td style="width:14%; min-width: 10rem;"><span class="p-column-title">Status</span>
-                            <span>{{product.status}}</span>
+                            <span>enable</span>
                         </td>
                         <td>
                             <div class="flex">
-                                <button pButton pRipple icon="pi pi-pencil"
-                                    class="p-button-rounded p-button-success mr-2"
-                                    (click)="editProduct(product)"></button>
+                                <!-- <button pButton pRipple icon="pi pi-ban"
+                                    class="p-button-rounded p-button-danger mr-2"
+                                    (click)="editProduct(product)"></button> -->
                                 <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-warning"
                                     (click)="deleteProduct(product)" *ngIf="product._id !== '64353bbc9399e5feceb2f103'"></button>
                             </div>
@@ -75,28 +78,10 @@
             <ng-template pTemplate="content">
                 <div class="field">
                     <label for="name">Name</label>
-                    <input type="text" pInputText id="name" [(ngModel)]="category.name" required autofocus
-                        [ngClass]="{'ng-invalid ng-dirty' : submitted && !category.name}" />
-                    <small class="ng-dirty ng-invalid" style='color:red' *ngIf="submitted && !category.name">Name is
+                    <input type="text" pInputText id="name" [(ngModel)]="feedback.name" required autofocus
+                        [ngClass]="{'ng-invalid ng-dirty' : submitted && !feedback.name}" />
+                    <small class="ng-dirty ng-invalid" style='color:red' *ngIf="submitted && !feedback.name">Name is
                         required.</small>
-                </div>
-                <div class="field" *ngIf="category._id && category._id !== '64353bbc9399e5feceb2f103'">
-                    <label for="name">Status</label>
-                    <div class="flex flex-wrap gap-3">
-                        <div class="flex align-items-center">
-                            <p-radioButton name="pizza" value="enabled" [(ngModel)]="category.status" inputId="category.status1"
-                                [ariaChecked]="true"></p-radioButton>
-                            <label for="category.status1" class="ml-2">enable</label>
-                        </div>
-                    
-                        <div class="flex align-items-center">
-                            <p-radioButton name="pizza" value="disabled" [(ngModel)]="category.status" inputId="ingredient2"></p-radioButton>
-                            <label for="ingredient2" class="ml-2">disable</label>
-                        </div>
-                    </div>
-                    
-                    <!-- <small class="ng-dirty ng-invalid" style='color:red' *ngIf="submitted && !product.status">Name is
-                        required.</small> -->
                 </div>
 
             </ng-template>
@@ -112,7 +97,7 @@
         <p-dialog [(visible)]="deleteProductDialog" header="Confirm" [modal]="true" [style]="{width:'450px'}">
             <div class="flex align-items-center justify-content-center">
                 <i class="pi pi-exclamation-triangle mr-3" style="font-size: 2rem"></i>
-                <span *ngIf="category">Are you sure you want to delete <b>{{category.name}}</b>?</span>
+                <span *ngIf="feedback">Are you sure you want to delete <b>{{feedback.name}}</b>?</span>
             </div>
             <ng-template pTemplate="footer">
                 <button pButton pRipple icon="pi pi-times" class="p-button-text" label="No"

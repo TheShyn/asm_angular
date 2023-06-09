@@ -65,7 +65,7 @@
       <!-- content -->
       <div class="col-lg-9">
         <header class="d-sm-flex align-items-center border-bottom mb-4 pb-3">
-          <strong class="d-block py-2">32 Items found </strong>
+          <strong class="d-block py-2">{{datas.length}} Items found </strong>
           <!-- input -->
 
           <div class="ms-auto d-flex gap-2 align-items-center">
@@ -75,12 +75,12 @@
                 placeholder="Search" (keyup)="searchFunction()"
                 style="padding: 7px 6px 7px 10px;border-radius: 5px;outline: none;  ">
             </div>
-            <select class="form-select d-inline-block w-auto border pt-1">
+            <!-- <select class="form-select d-inline-block w-auto border pt-1">
               <option value="0">Best match</option>
               <option value="1">Recommended</option>
               <option value="2">High rated</option>
               <option value="3">Randomly</option>
-            </select>
+            </select> -->
             <div class="btn-group shadow-0 border">
               <a class="btn btn-light" style="border:none" [class.active]="typeList" (click)="changeListColumn()"
                 title="List view">

@@ -39,6 +39,9 @@ import { DialogModule } from 'primeng/dialog';
 import { ManacateComponent } from './pages/admin/manacate/manacate.component';
 import { FormBuilder } from '@angular/forms';
 import { CartComponent } from './pages/cart/cart.component';
+import { ManaFeedbacksComponent } from './pages/admin/mana-feedbacks/mana-feedbacks.component';
+import { ManaUsersComponent } from './pages/admin/mana-users/mana-users.component';
+import { JwtModule, JwtHelperService, JWT_OPTIONS } from '@auth0/angular-jwt';
 
 
 @NgModule({
@@ -57,6 +60,8 @@ import { CartComponent } from './pages/cart/cart.component';
     ManaProductComponent,
     ManacateComponent,
     CartComponent,
+    ManaFeedbacksComponent,
+    ManaUsersComponent,
   ],
   imports: [
     FormsModule,
@@ -84,9 +89,15 @@ import { CartComponent } from './pages/cart/cart.component';
     InputNumberModule,
     RadioButtonModule,
     DropdownModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    JwtModule.forRoot({
+      config: {
+        // Cấu hình tùy chọn của JWT_OPTIONS nếu cần thiết
+      }
+    })
   ],
-  providers: [],
+  providers: [JwtHelperService,
+    { provide: JWT_OPTIONS, useValue: JWT_OPTIONS }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

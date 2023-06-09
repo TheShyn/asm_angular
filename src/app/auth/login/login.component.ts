@@ -19,7 +19,7 @@ export class LoginComponent {
     private messageService: MessageService,
     private router: Router,
     private LocaStoreService: LocaStoreService,
-    private CartsService: CartsService
+    private CartsService: CartsService,
     ) {
 
   }
@@ -40,8 +40,11 @@ export class LoginComponent {
             accessToken: response.accessToken,
             email: response.user.email,
             name: response.user.name,
-            id: response.user._id
+            id: response.user._id,
+            status: response.user.status,
+            role: response.user.role
           }
+          this.AuthService.setToken(a.accessToken)
           this.LocaStoreService.setStore('userInfor', a)
 
           this.messageService.add({ severity: 'success', summary: 'Successful', detail: 'Login successfully', life: 2000 });
@@ -67,5 +70,14 @@ export class LoginComponent {
         }
       )
     }
+  }
+  ngOnInit(){
+    this.LocaStoreService.getStore("userInfor").subscribe(
+      (response)=>{
+        if(response.accessToken){
+          this.router.navigate(['/home']);
+        }
+      }
+    )
   }
 }

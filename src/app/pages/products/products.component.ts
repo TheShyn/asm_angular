@@ -50,7 +50,7 @@ export class ProductsComponent implements OnInit {
   }
   searchFunction() {
     this.datas = this.all_datas.filter((item: any) => {
-      return item?.name.toLowerCase().includes(this.searchText)
+      return item?.name.toLowerCase().includes(this.searchText.toLocaleLowerCase())
     })
   }
   changePage() {
@@ -77,9 +77,10 @@ export class ProductsComponent implements OnInit {
     this.router.navigate(['/', productId]);
   }
   ngOnInit(): void {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
     this.ProductsService.getProducts().subscribe(
       (response: any) => {
-        this.all_datas = response;
+        this.all_datas = response.filter((item: any) => item.status !== "disabled");
         this.changePage()
         // console.log(response);
       },
@@ -90,7 +91,7 @@ export class ProductsComponent implements OnInit {
 
     this.CategoriesService.getAllCategories().subscribe(
       (response: any) => {
-        this.categories = response.data;
+        this.categories = response.data.filter((item: any) => item.status !== "disabled");
         // console.log(response);
       },
       (error: any) => {

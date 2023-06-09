@@ -12,15 +12,21 @@ import { DasboardComponent } from './pages/admin/dasboard/dasboard.component';
 import { ManaProductComponent } from './pages/admin/mana-product/mana-product.component';
 import { ManacateComponent } from './pages/admin/manacate/manacate.component';
 import { CartComponent } from './pages/cart/cart.component';
+import { ManaFeedbacksComponent } from './pages/admin/mana-feedbacks/mana-feedbacks.component';
+import { ManaUsersComponent } from './pages/admin/mana-users/mana-users.component';
+import { MyGuardGuard } from './guards/my-guard.guard';
 const routes: Routes = [
   {
     path: 'admin',
+    canActivate:[MyGuardGuard],
     component: AppLayoutComponent,
     children:[
       {path: "", redirectTo: "dashboard", pathMatch: "full"},
       {path: "dashboard", component: DasboardComponent},
       {path: "managementProduct", component: ManaProductComponent},
       {path: "managementCategories", component: ManacateComponent},
+      {path: "managementFeedbacks", component: ManaFeedbacksComponent},
+      {path: "managementUsers", component: ManaUsersComponent},
     ]
   },
   {

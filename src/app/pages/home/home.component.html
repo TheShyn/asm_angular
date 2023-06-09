@@ -105,7 +105,7 @@
                 </div>
             </div>
             <div class="col-md-6">
-                <div class="card card-span h-100 text-white"><img class="card-img h-100" src="assets/img/outfit.png"
+                <div routerLink="/products" class="card card-span h-100 text-white"><img class="card-img h-100" src="assets/img/outfit.png"
                         alt="..." />
                     <div class="card-img-overlay bg-dark-gradient">
                         <div class="d-flex align-items-end justify-content-center h-100"><a
@@ -122,9 +122,9 @@
         </div>
         <div class="row h-100 g-2 py-1">
             <div class="col-md-4">
-                <div class="card card-span h-100 text-white"><img class="card-img h-100" src="assets/img/vanity-bag.png"
+                <div class="card card-span h-100 text-white"><img  class="card-img h-100" src="assets/img/vanity-bag.png"
                         alt="..." />
-                    <div class="card-img-overlay bg-dark-gradient">
+                    <div class="card-img-overlay bg-dark-gradient" routerLink="/products">
                         <div class="d-flex align-items-end justify-content-center h-100"><a
                                 class="btn btn-lg text-light fs-4" href="" role="button">Vanity Bags<svg
                                     class="bi bi-arrow-right-short" xmlns="http://www.w3.org/2000/svg" width="23"
@@ -139,7 +139,7 @@
             <div class="col-md-4">
                 <div class="card card-span h-100 text-white"><img class="card-img h-100" src="assets/img/hat.png"
                         alt="..." />
-                    <div class="card-img-overlay bg-dark-gradient">
+                    <div class="card-img-overlay bg-dark-gradient" routerLink="/products">
                         <div class="d-flex align-items-end justify-content-center h-100"><a
                                 class="btn btn-lg text-light fs-4" href="" role="button">Hats<svg
                                     class="bi bi-arrow-right-short" xmlns="http://www.w3.org/2000/svg" width="23"
@@ -154,7 +154,7 @@
             <div class="col-md-4">
                 <div class="card card-span h-100 text-white"><img class="card-img h-100" src="assets/img/high-heels.png"
                         alt="..." />
-                    <div class="card-img-overlay bg-dark-gradient">
+                    <div class="card-img-overlay bg-dark-gradient" routerLink="/products">
                         <div class="d-flex align-items-end justify-content-center h-100"><a
                                 class="btn btn-lg text-light fs-4" href="" role="button">High Heels<svg
                                     class="bi bi-arrow-right-short" xmlns="http://www.w3.org/2000/svg" width="23"
@@ -298,7 +298,7 @@
 <section class="py-0" style="margin-top:120px;" id="collection">
     <div class="container">
         <div class="row h-100 gx-2">
-            <div class="col-md-6">
+            <div class="col-md-6" routerLink="/products">
                 <div class="card card-span h-100 text-white"><img class="card-img h-100" src="assets/img/urban.png"
                         alt="..." />
                     <div class="card-img-overlay bg-dark-gradient">
@@ -309,7 +309,7 @@
                     </div><a class="stretched-link" href=""></a>
                 </div>
             </div>
-            <div class="col-md-6">
+            <div class="col-md-6" routerLink="/products">
                 <div class="card card-span h-100 text-white"><img class="card-img h-100" src="assets/img/country.png"
                         alt="..." />
                     <div class="card-img-overlay bg-dark-gradient">
@@ -329,11 +329,11 @@
     <div class="container">
         <div class="row h-100">
             <div class="col-lg-7 mx-auto text-center mb-6">
-                <h5 class="fw-bold fs-3 fs-lg-5 lh-sm mb-3">Best Sellers</h5>
+                <h5 class="fw-bold fs-3 fs-lg-5 lh-sm mb-3">New product</h5>
             </div>
             <div class="col-12">
                 <div class="row">
-                    <div class="col-md-3 col-sm-6" *ngFor="let items of randomProducts">
+                    <div class="col-md-3 col-sm-6" *ngFor="let items of newProduct">
                         <div class="product-grid" style="border-radius: 5px; overflow: hidden;">
                             <div class="product-image">
                                 <a [routerLink]="'/products/'+items._id" class="image">
@@ -371,7 +371,7 @@
 <section class="py-0" id="outlet">
     <div class="container">
         <div class="row h-100 g-0">
-            <div class="col-md-6">
+            <div class="col-md-6" routerLink="/products">
                 <div class="card card-span h-100 text-white"><img class="card-img h-100" src="assets/img/summer.png"
                         alt="..." />
                     <div class="card-img-overlay bg-dark-gradient rounded-0">
@@ -383,7 +383,7 @@
             </div>
             <div class="col-md-6 h-100">
                 <div class="row h-100 g-0">
-                    <div class="col-md-6 h-100">
+                    <div class="col-md-6 h-100" routerLink="/products">
                         <div class="card card-span h-100 text-white"><img class="card-img h-100"
                                 src="assets/img/sunglasses.png" alt="..." />
                             <div class="card-img-overlay bg-dark-gradient rounded-0">
@@ -393,7 +393,7 @@
                             </div><a class="stretched-link" href=""></a>
                         </div>
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-md-6" routerLink="/products">
                         <div class="card card-span h-100 text-white"><img class="card-img h-100"
                                 src="assets/img/footwear.png" alt="..." />
                             <div class="card-img-overlay bg-dark-gradient rounded-0">
@@ -403,7 +403,7 @@
                             </div><a class="stretched-link" href=""></a>
                         </div>
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-md-6" routerLink="/products">
                         <div class="card card-span h-100 text-white"><img class="card-img h-100"
                                 src="assets/img/hat-black-border.png" alt="..." />
                             <div class="card-img-overlay bg-dark-gradient rounded-0">
@@ -413,7 +413,7 @@
                             </div><a class="stretched-link" href=""></a>
                         </div>
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-md-6" routerLink="/products">
                         <div class="card card-span h-100 text-white"><img class="card-img h-100"
                                 src="assets/img/watches.png" alt="..." />
                             <div class="card-img-overlay bg-dark-gradient rounded-0">

@@ -43,4 +43,13 @@ export class RegisterComponent {
     }
 
   }
+  ngOnInit(){
+    this.LocaStoreService.getStore("userInfor").subscribe(
+      (response)=>{
+        if(response.accessToken){
+          this.router.navigate(['/home']);
+        }
+      }
+    )
+  }
 }
