@@ -33,5 +33,6 @@ export class NavbarComponent {
   logout() {
     this.LocaStoreService.removeStore("userInfor")
     this.check=false
+    this.router.navigate(['/login']);
   }
 }
